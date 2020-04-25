@@ -1,0 +1,41 @@
+<mat-card class="container" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="3%" >
+
+    <mat-card-title class="font" >
+        <span style="color:'#4285f4';">F</span>
+        <span style="color:'#EA4335';">u</span>
+        <span style="color:'#fbbC05';">n</span>
+        <span style="color:'#4285f4';">d</span>
+        <span style="color:'#34A853';">o</span>
+        <span style="color:'#EA4335';">o</span>
+    </mat-card-title>
+
+    <mat-card-title class="font size" >Sign In</mat-card-title>
+
+    <mat-form-field  fxFlex="60" class="email" appearance="outline" fxFlexOffset="20" >
+        <mat-label >Email</mat-label>
+        <input matInput [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">Email is required</mat-error>
+    </mat-form-field>
+
+    <div fxLAyout="row">    
+        <mat-form-field appearance="outline" >
+            <mat-label >password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
+        <mat-error *ngIf="password.invalid" >password is required </mat-error>
+        </mat-form-field>
+
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </div>
+
+
+    <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="stretch">
+        
+        <div fxLayout="column" flexLayoutAlign="start start">
+        <a routerLink='/forgot-password'>Forgot Password</a>
+        <a routerLink='/registration'>Create Account</a>
+    </div>  
+        <button mat-raised-button fxFlexAlign="center" (click)=submit()>Login</button>
+    
+    </div>
