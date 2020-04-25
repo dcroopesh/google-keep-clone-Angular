@@ -1,0 +1,71 @@
+<mat-card class="container" fxLayout="column" fxLayoutAlign="space-between start" fxLayoutGap="3%" >
+
+    <mat-card-title class="font" >
+        <span style="color:'#4285f4';">F</span>
+        <span style="color:'#EA4335';">u</span>
+        <span style="color:'#fbbC05';">n</span>
+        <span style="color:'#4285f4';">d</span>
+        <span style="color:'#34A853';">o</span>
+        <span style="color:'#EA4335';">o</span>
+    </mat-card-title>
+
+    <mat-card-title class="font" fxFlexAlign="start">Create your Fundoo Account</mat-card-title>
+
+    <div class="flex1" fxLayout="row" fxFlexAlign="stretch" fxLayoutAlign="space-between start" fxLayoutGap="2%" fxLayout.lt-md="column" fxLAyoutAlign.lt-md="start stretch">
+
+        <mat-form-field appearance="outline" fxFlex.lt-md="stretch">
+            <mat-label>First Name</mat-label>
+            <input matInput [formControl]="firstname" required>
+            <mat-error *ngIf="firstname.invalid" > {{ errorMessageForFirstName() }} </mat-error>
+            <mat-hint>Should have minimum fours letters</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" >
+            <mat-label>Last Name</mat-label>
+            <input matInput [formControl]="lastname" required>
+            <mat-error *ngIf="lastname.invalid" > {{ errorMessageForLastName() }} </mat-error>
+
+            <mat-hint>minimum one character</mat-hint>
+        </mat-form-field>
+    
+    </div>
+
+   
+     
+        <mat-form-field  fxFlexAlign="stretch" class="email" appearance="outline" fxFlex.lt-md="100%" >
+            <mat-label >Email</mat-label>
+            <input matInput [formControl]="email" required>
+            <mat-error *ngIf="email.invalid" > {{ errorMessageForEmail() }} </mat-error>
+            <mat-hint>Should be valid email needs for verification</mat-hint>
+        </mat-form-field>
+    
+
+    <div class="flex3" fxLayout="row" fxLayoutGap="1%" fxLayout.lt-md="column">
+
+        <mat-form-field appearance="outline" >
+            <mat-label >password</mat-label>
+            <mat-hint >Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
+            <mat-error *ngIf="password.invalid" > {{ errorMessageForPassword() }} </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Confirm password</mat-label>
+            <mat-hint>Hint</mat-hint>
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl] = "confirmPassword">
+            <mat-error *ngIf="checkPasswordEqual()">password should match</mat-error>
+         </mat-form-field>
+
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </div>
+
+  <div fxLayout="row"  fxLayoutAlign="space-between center" fxFlex="stretch">
+     
+    <a routerLink='/login'>Already have account</a>  
+
+    <button mat-raised-button fxFlexAlign="center" (click)="submit()" >Submit</button>
+
+</div>
+</mat-card>
