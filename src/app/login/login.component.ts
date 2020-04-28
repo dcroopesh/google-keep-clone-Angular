@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Validators, FormControl } from '@angular/forms';
-import { MatSnackBar} from '@angular/material/snack-bar';
+import { UtilityService } from '../services/utility.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { MatSnackBar} from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit {
 
   hide = true;
-  constructor(private http: HttpClient,private snackBarRef:MatSnackBar) {}
+  constructor(private requests : UserService,private util : UtilityService) {}
 
 
   ngOnInit(): void {
@@ -29,14 +29,19 @@ export class LoginComponent implements OnInit {
     "cartId":""
     }
 
-    this.http.post("http://fundoonotes.incubation.bridgelabz.com/api/user/login",dataObject)
-    .subscribe((response) => {
-      this.snackBarRef.open("Success",response['data']['message'],{ duration:100})
-    },
+    this.requests.login(dataObject)
+    .subscribe((response) =>{
+      this.util.snackBar("Success","Login Successful",1000);
     
-      (error) => {    
-        this.snackBarRef.open("login failed",error.error.error.message,{ duration:1000});
-      });
+    },
+    (error) =>{
+      console.log(error)
+      this.util.snackBar("Failed",error.error.error.message,1000);
+    });
+
+     
+    
+      
   }
 }
 
