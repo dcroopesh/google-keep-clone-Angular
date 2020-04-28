@@ -1,0 +1,22 @@
+<div class="toolbar">
+    
+    <mat-toolbar class="colour" fxLayout="row" fxLayoutGap="3%" fxLayout="space-between center">
+        <button mat-icon-button (click)="sidenav.toggle()" >
+        <mat-icon>menu</mat-icon></button>
+        <h2>fundooNotes</h2>
+    <mat-card style="height: 5%;width: 60%;" fxLayout="row" fxLayoutGap="3%" fxLayoutAlign="start center">
+        
+        <mat-icon >search</mat-icon>
+        <input type="text" name="a" id="a">
+
+
+    </mat-card>
+        <mat-icon>shopping_cart</mat-icon>
+        <img src="../../assets/images/BlankImage.jpg" alt="dp">
+    </mat-toolbar>
+</div>
+    <mat-drawer-container class="example-container" >
+        <mat-drawer #sidenav mode="side">
+          Sidenav content
+        </mat-drawer>
+    </mat-drawer-container>
