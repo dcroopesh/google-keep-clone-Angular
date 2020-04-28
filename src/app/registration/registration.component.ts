@@ -1,8 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from "@angular/router";
+import { UserService } from '../services/user.service';
+import { UtilityService } from '../services/utility.service';
 
 
 @Component({
@@ -14,7 +14,9 @@ export class RegistrationComponent {
 
   hide = true;
 
-  constructor(private http: HttpClient,private  snackBarRef : MatSnackBar,private router: Router) {}
+  constructor(private router: Router , private requests : UserService,private util : UtilityService) {
+    
+  }
 
   ngOnInit(): void {}
 
@@ -74,6 +76,7 @@ export class RegistrationComponent {
     }
     
       submit(){
+        
         let dataObject={"firstName": this.firstname.value,
         "lastName": this.lastname.value,
         "service": "advance",
@@ -82,17 +85,20 @@ export class RegistrationComponent {
         "cartId":"5ea2c96cad53b700227c5df4" 
         }
 
-        this.http.post("http://fundoonotes.incubation.bridgelabz.com/api/user/userSignUp",dataObject)
-        .subscribe((response) => {
-          this.snackBarRef.open("Success",response['data']['message'],{ duration:100})
-          this.router.navigate(['/login'])
-        }
-      ,
-      (error) => {    
-        this.snackBarRef.open("Registration failed",error.error.error.message,{ duration:1000});
-      })
+       
+        this.requests.registration(dataObject)
+        .subscribe((response) =>{
+          this.util.snackBar("Success","Login Successful",1000);
+          this.router.navigate(['/login']);
+        
+        },
+        (error) =>{
+          console.log(error)
+          this.util.snackBar("Failed",error.error.error.message,1000);
+        });
+          
+        
+        
     }
+  }
     
-
-
-}
