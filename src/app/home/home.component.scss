@@ -1,0 +1,49 @@
+.toolbar{
+    
+    height: 8%;
+}
+
+.colour{
+    background-color: #00A3FF ;
+}
+
+
+
+.size{
+    position: relative;
+    width:100px;
+    height: 100px;
+}
+
+.example-container {
+    position: absolute;
+    // border: 1px solid black;
+    top: 10%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+  }
+
+mat-drawer{
+    width:18%
+  }
+
+
+img{
+    border-radius: 50%;
+    width:30px;
+    height: 30px;
+}
+
+
+@media only screen and (max-width: 500px) {
+    mat-drawer {
+      width:50%;
+    }
+
+    mat-card{
+        display: none;
+    }
+}   
+  
