@@ -29,6 +29,8 @@ import { HomeComponent } from './home/home.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { IconsComponent } from './icons/icons.component';
 import { CreateNoteComponent } from './create-note/create-note.component';
+import { NotesComponent } from './notes/notes.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 
@@ -43,7 +45,8 @@ import { CreateNoteComponent } from './create-note/create-note.component';
     ResetpasswordComponent,
     HomeComponent,
     IconsComponent,
-    CreateNoteComponent
+    CreateNoteComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { CreateNoteComponent } from './create-note/create-note.component';
     AppRoutingModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDividerModule
     
     
   ],
