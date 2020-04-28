@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { MatSnackBar} from '@angular/material/snack-bar';
 import { config } from 'rxjs';
+import { UserService } from '../services/user.service';
+import { UtilityService } from '../services/utility.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -11,7 +12,9 @@ import { config } from 'rxjs';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor(private http: HttpClient,private  snackBarRef : MatSnackBar) { }
+  router: any;
+
+  constructor(private requests : UserService,private util : UtilityService) { }
 
   ngOnInit(): void {
   }
@@ -19,13 +22,19 @@ export class ForgotPasswordComponent implements OnInit {
   email = new FormControl('',Validators.required);
 
   submit(){
-  this.http.post("http://fundoonotes.incubation.bridgelabz.com/api/user/reset",{"email":this.email.value})
-  .subscribe((response) => {
-    this.snackBarRef.open("",response['message'],{ duration:1000})
+   this.requests.forgotPassword( {"email": this.email.value})
+   .subscribe((response) =>{
+    
+    this.util.snackBar("Success",response.body['message'],1000);
+    
+  
   },
-  (error) => {    
-    this.snackBarRef.open("Failed",error.error.error.message,{ duration:1000});
+  (error) =>{
+    console.log(error.error)
+    
+    this.util.snackBar("Failed",error.error.error.message,1000);
   });
   }
+  
 }
 
