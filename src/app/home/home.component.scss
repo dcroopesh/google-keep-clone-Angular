@@ -1,13 +1,12 @@
 .toolbar{
     
-    height: 8%;
+    height: 9%;
+    margin: 0;
 }
 
 .colour{
-    background-color: #00A3FF ;
+    background-color: white;
 }
-
-
 
 .size{
     position: relative;
@@ -17,15 +16,15 @@
 
 .example-container {
     position: absolute;
-    // border: 1px solid black;
-    top: 10%;
+    top:11%;
     bottom: 0;
     left: 0;
     right: 0;
+    background-color: white;
     
   }
 
-mat-drawer{
+mat-sidenav{
     width:18%
   }
 
@@ -36,14 +35,51 @@ img{
     height: 30px;
 }
 
+.side-nav{
+    width: 90%; 
+    height:7%;
+    margin: 2px 2px 1px 0 ; 
+    cursor: pointer;
+}
+
+.side-nav:hover{
+    background-color : #feefc3;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    
+}
+
+p{
+    margin: 0;
+}
+
+.search-bar{
+
+    background-color: rgb(241, 237, 237);
+    width: 60%;
+}
+
+.search-bar > input{
+    width: 90%;
+    border: 0;
+    outline: none;
+    margin: 0;
+}
+
+
 
 @media only screen and (max-width: 500px) {
-    mat-drawer {
-      width:50%;
+    mat-sidenav{
+      width:70%;
     }
 
-    mat-card{
-        display: none;
-    }
+    .search-bar{
+      display:none;
+
+      }
+     
+    
 }   
+
+
   
