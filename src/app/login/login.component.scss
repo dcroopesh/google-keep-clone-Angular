@@ -1,7 +1,8 @@
 .container{
     width:30%;
     height:auto;
-    margin: 8% auto;
+    margin: 10% auto;
+    
     // border: 1px solid rgba($color: #000000, $alpha: .3);
 }
 
@@ -23,11 +24,31 @@
     .container {
       width:auto;
       height:auto ;
+      margin:0;
     }
 
 .size{
   font-size: 4rem;
+
+
+  .email{
+    width:100%;
+  }
+  
+  .password{
+    width:100%
+  }
+
 }
     
 
+}
+
+.email{
+ 
+  width:100%
+}
+
+.password{
+  width:100%;
 }
