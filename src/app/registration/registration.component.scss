@@ -76,10 +76,6 @@ h2{
 
 
 
-.flex1{
-  width:inherit;
-  
-}
 
 // ::ng-deep .mat-form-field-flex{
 //   width:100% !important;
@@ -115,11 +111,16 @@ h2{
 
 
 @media only screen and (max-width: 500px) {
-  ::ng-deep .mat-form-field-flex{
-    width:70% !important;
+  
+  .align{
+    width:100%;
   }
 }
 
 .flex1{
   width: inherit;
+}
+
+.email{
+  width:92%;
 }
