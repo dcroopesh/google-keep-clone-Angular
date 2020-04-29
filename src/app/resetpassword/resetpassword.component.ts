@@ -28,9 +28,8 @@ export class ResetpasswordComponent implements OnInit {
   submit(){
     let dataObject={
     "newPassword": this.password.value,
-    
     }
-    console.log(this.password.value)
+    
 
     this.requests.resetPassword(dataObject)
     .subscribe((response) =>{
