@@ -1,0 +1,26 @@
+<div *ngIf="hidden" (click)=hide()> 
+<mat-card class="container1"  fxFlex.lt-md = "1 1 96%" fxFlexOffset.lt-md="2%"fxFlexOffset="30%" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="3%">
+    
+    <p>Take a note...</p>
+    <div fxLayout="row" fxLayoutGap="15%">
+        <mat-icon>view_list</mat-icon>
+        <mat-icon>panorama</mat-icon>
+    </div>    
+
+</mat-card>
+</div>
+<div *ngIf="! hidden">
+<mat-card class="container" fxFlex.lt-md = "1 1 96%"    fxFlexOffset.lt-md="2%"fxFlexOffset="30%" fxLayout="column" fxLayoutAlign="space-between start" fxLayoutGap="4%">
+    
+
+    <div contenteditable="true" id="title" class="title" data-text="Title"></div>
+   
+    <div contenteditable="true" id="description" class="title" data-text="Take a note..."></div>
+
+    <div style="width:100%; position:relative ; top:0px"> 
+    
+    <app-icons (onClose)=save($event) ></app-icons>
+</div>
+
+</mat-card>
+</div>
