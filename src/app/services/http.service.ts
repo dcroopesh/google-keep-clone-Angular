@@ -11,7 +11,20 @@ export class HttpService {
 
   postRequest( requestAPI : string, dataObject,httpOptions?){
   
-    return this.http.post(requestAPI,dataObject,{headers : httpOptions , observe:'response'})
+    return this.http.post(requestAPI,dataObject,{ headers : httpOptions , observe:'response'})
 
   }
+
+  getRequest( requestAPI : string ,httpOptions){
+    return this.http.get(requestAPI,{headers : httpOptions})
+  }
+
+  getEncodData(toConvert) { 
+    const formBody = []; 
+    for (const property in toConvert) { 
+      const encodedKey = encodeURIComponent(property); 
+      const encodedValue = encodeURIComponent(toConvert[property]); 
+      formBody.push(encodedKey + '=' + encodedValue); 
+    } 
+    return formBody.join('&'); }
 }
