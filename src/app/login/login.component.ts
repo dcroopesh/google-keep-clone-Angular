@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { UtilityService } from '../services/utility.service';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { UserService } from '../services/user.service';
 export class LoginComponent implements OnInit {
 
   hide = true;
-  constructor(private requests : UserService,private util : UtilityService) {}
+  constructor(private requests : UserService,private util : UtilityService,
+    private router : Router) {}
 
 
   ngOnInit(): void {
@@ -31,7 +33,9 @@ export class LoginComponent implements OnInit {
 
     this.requests.login(dataObject)
     .subscribe((response) =>{
+      localStorage.setItem("token",response.body['id'])
       this.util.snackBar("Success","Login Successful",1000);
+      this.router.navigate(['/home']);
     
     },
     (error) =>{
