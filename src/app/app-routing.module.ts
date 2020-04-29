@@ -9,6 +9,9 @@ import { FlexDesignComponent } from './flex-design/flex-design.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { IconsComponent } from './icons/icons.component';
 import { CreateNoteComponent } from './create-note/create-note.component';
+import { NotesComponent } from './notes/notes.component';
+import { RemaindersComponent } from './remainders/remainders.component';
+import { DisplayNoteComponent } from './display-note/display-note.component';
 
 
 const routes: Routes = [
@@ -17,13 +20,18 @@ const routes: Routes = [
   { path: 'registration' , component: RegistrationComponent },
   { path: 'login' , component: LoginComponent},
   { path: 'forgotpassword' , component: ForgotPasswordComponent},
-  { path: 'home' , component: HomeComponent},
+  { path: 'display' , component: DisplayNoteComponent},
+
   { path: 'practice' , component: FlexDesignComponent},
   { path: 'resetpassword/:token' , component : ResetpasswordComponent},
   { path: 'icons' , component: IconsComponent},
   { path: 'cnote' , component: CreateNoteComponent},
-
-  { path: '**' , component: PageNotFoundComponent}
+  { path: 'home' , component: HomeComponent ,
+    children : [{path : 'note' , component : NotesComponent},
+                {path : 'remainder' , component : RemaindersComponent}]
+ },
+  { path: '**' , component: PageNotFoundComponent},
+  
   
 ];
 
