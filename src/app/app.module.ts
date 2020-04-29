@@ -31,6 +31,8 @@ import { IconsComponent } from './icons/icons.component';
 import { CreateNoteComponent } from './create-note/create-note.component';
 import { NotesComponent } from './notes/notes.component';
 import {MatDividerModule} from '@angular/material/divider';
+import { RemaindersComponent } from './remainders/remainders.component';
+import { DisplayNoteComponent } from './display-note/display-note.component';
 
 
 
@@ -46,7 +48,9 @@ import {MatDividerModule} from '@angular/material/divider';
     HomeComponent,
     IconsComponent,
     CreateNoteComponent,
-    NotesComponent
+    NotesComponent,
+    RemaindersComponent,
+    DisplayNoteComponent
   ],
   imports: [
     BrowserModule,
