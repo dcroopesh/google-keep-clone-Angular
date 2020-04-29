@@ -1,0 +1,13 @@
+<div class="container" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="1%">
+    <!-- <div *ngFor="let item of notes"  > -->
+    <mat-card *ngFor="let item of notes">
+        <div>
+            {{item.title}}
+        </div>
+        
+        <div>
+            {{item.description}}
+        </div>
+    </mat-card>
+</div>
+<!-- </div> -->
