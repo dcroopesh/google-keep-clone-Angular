@@ -1,0 +1,11 @@
+mat-card{
+    position: absolute;
+    display: inline-block;
+    width:80px;
+    height: 20px;
+    z-index: 1;
+}
+
+mat-card:hover{
+    background-color: rgb(241, 237, 237);
+}
