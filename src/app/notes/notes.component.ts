@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-notes',
@@ -7,10 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotesComponent implements OnInit {
 
-  abc = false;
-  constructor() { }
+  notes ;
+  note = [];
+  constructor(private requests : UserService) { }
 
   ngOnInit(): void {
+    
+   this.displayNotes();
+  
   }
 
-}
+  displayNotes(){
+    console.log("123")
+    this.requests.getNotes()
+    .subscribe((response) => {
+      this.notes = response['data']['data']
+      for (var i =0 ; i < this.notes.length ;i++ ){
+        
+        if (! this.notes[i]['isDeleted']){
+         
+          this.note.push(this.notes[i]);
+        
+          }
+      }
+    },
+    (error) =>{
+      console.error(error);
+    })
+  }
+
+  callDisplay(msg){
+    console.log("refresh")
+    console.log(msg)
+    this.displayNotes();
+  }
+
+} 
