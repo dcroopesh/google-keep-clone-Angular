@@ -21,6 +21,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { UtilityService } from './services/utility.service';
 import { UserService } from './services/user.service';
@@ -33,6 +34,15 @@ import { NotesComponent } from './notes/notes.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { RemaindersComponent } from './remainders/remainders.component';
 import { DisplayNoteComponent } from './display-note/display-note.component';
+import { UpdateNotesComponent } from './update-notes/update-notes.component';
+import { ReminderComponent } from './Icons/reminder/reminder.component';
+import { CollaboratorComponent } from './Icons/collaborator/collaborator.component';
+import { ColorComponent } from './Icons/color/color.component';
+import { ImageComponent } from './Icons/image/image.component';
+import { ArchiveComponent } from './Icons/archive/archive.component';
+import { MoreComponent } from './Icons/more/more.component';
+import { CloseComponent } from './Icons/close/close.component';
+import { PinComponent } from './Icons/pin/pin.component';
 
 
 
@@ -50,7 +60,16 @@ import { DisplayNoteComponent } from './display-note/display-note.component';
     CreateNoteComponent,
     NotesComponent,
     RemaindersComponent,
-    DisplayNoteComponent
+    DisplayNoteComponent,
+    UpdateNotesComponent,
+    ReminderComponent,
+    CollaboratorComponent,
+    ColorComponent,
+    ImageComponent,
+    ArchiveComponent,
+    MoreComponent,
+    CloseComponent,
+    PinComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +87,8 @@ import { DisplayNoteComponent } from './display-note/display-note.component';
     MatSnackBarModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule
     
     
   ],
