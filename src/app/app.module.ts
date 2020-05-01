@@ -22,6 +22,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { UtilityService } from './services/utility.service';
 import { UserService } from './services/user.service';
@@ -43,6 +44,8 @@ import { ArchiveComponent } from './Icons/archive/archive.component';
 import { MoreComponent } from './Icons/more/more.component';
 import { CloseComponent } from './Icons/close/close.component';
 import { PinComponent } from './Icons/pin/pin.component';
+import { ArchiveSidenavComponent } from './archive-sidenav/archive-sidenav.component';
+import { UnarchiveComponent } from './Icons/unarchive/unarchive.component';
 
 
 
@@ -69,7 +72,9 @@ import { PinComponent } from './Icons/pin/pin.component';
     ArchiveComponent,
     MoreComponent,
     CloseComponent,
-    PinComponent
+    PinComponent,
+    ArchiveSidenavComponent,
+    UnarchiveComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +93,8 @@ import { PinComponent } from './Icons/pin/pin.component';
     MatToolbarModule,
     MatSidenavModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
     
     
   ],
