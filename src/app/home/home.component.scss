@@ -16,7 +16,7 @@
 
 .example-container {
     position: absolute;
-    top:11%;
+    top:10%;
     bottom: 0;
     left: 0;
     right: 0;
@@ -25,7 +25,9 @@
   }
 
 mat-sidenav{
-    width:18%
+    padding-top: 4px;
+    width:18%;
+    border-right : none;
   }
 
 
@@ -36,16 +38,30 @@ img{
 }
 
 .side-nav{
+    
     width: 90%; 
     height:7%;
-    margin: 2px 2px 1px 0 ; 
+    margin: 3px 2px 1px 0 ; 
     cursor: pointer;
+   
 }
 
+
 .side-nav:hover{
+    width: 99%;
     background-color : #feefc3;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+    margin-bottom: 2px;
+    
+}
+
+.side-nav {
+    width: 99%;
+    background-color : #ebeae6;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-bottom: 2px;
     
 }
 
@@ -77,9 +93,21 @@ p{
       display:none;
 
       }
-     
-    
 }   
+
+mat-divider{
+    
+    border-top-color:#f3cd5b;
+
+}
+.divider{
+    margin-top: 8%;
+    border-top-color:#f3cd5b;
+}
+
+mat-sidenav-content{
+   // background-color: #feefc3;;
+}
 
 
   
