@@ -1,7 +1,6 @@
 
 .container{
     margin-top: 1%;
-    
     width:40%;
     height:30%;
     box-shadow: 0 5px 10px rgba(0,0,0,0.30);
@@ -18,11 +17,16 @@
     
     border: 0;
     font-family: 'Open Sans';
+    
     outline: none;
     font-size: .6rem;
     width:95%;
     height: 10%;
 
+}
+
+#title{
+    font-weight: bold;
 }
 
 textarea{
