@@ -1,13 +1,28 @@
-<div class="container" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="1%">
-    <!-- <div *ngFor="let item of notes"  > -->
-    <mat-card *ngFor="let item of notes">
-        <div>
-            {{item.title}}
+<div class="container" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="3%">
+    
+    
+    <mat-card  *ngFor="let item of notesObjects.slice().reverse()"  style="background-color: {{item.color}}"   fxLayout="column" fxLayoutAlign="space-between start" fxLayoutAlign="8%">
+    
+
+                   
+        <div id="title" (click)="showDialog(item)" (mouseover)=getItem(item)><b>{{item.title}}</b>
+            
         </div>
-        
-        <div>
+            <!-- <div>{{item.isDeleted}}</div> -->
+        <div style="height:max-content">
             {{item.description}}
         </div>
+        <div  fxLayout="row" fxLayoutAlign="space-between center">  
+            <app-reminder class="icons"></app-reminder>
+            <app-collaborator class="icons"></app-collaborator>
+            <app-color class="icons"></app-color>
+            <app-image class="icons"></app-image>
+            <app-archive class="icons"></app-archive>
+            <app-more class="icons" [noteId]="noteId" (ondelete)=send($event)></app-more>
+        </div>
+    
+    
     </mat-card>
+
 </div>
-<!-- </div> -->
+
