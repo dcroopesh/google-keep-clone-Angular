@@ -92,5 +92,27 @@ export class UserService {
     return this.apiRequest.postRequest(environment.BaseNotesURL + 'trashNotes',dataObject,httpOptions);
   }
 
+  getArchiveNotesList(){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.getRequest(environment.BaseNotesURL + 'getArchiveNotesList/',httpOptions)
+
+  }
+
+
+    unArchiveNotes(dataObject){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseNotesURL + 'archiveNotes/',dataObject,httpOptions);
+  }
 }
 
