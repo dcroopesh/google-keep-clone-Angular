@@ -24,7 +24,7 @@
         <app-collaborator></app-collaborator>
         <app-color (color)="getColor($event)"></app-color>
         <app-image></app-image>
-        <app-archive></app-archive>
+        <app-archive (onArchive)=Archive()></app-archive>
         <app-more></app-more>
         <app-close (onClose)=save($event)></app-close>
     </div>
