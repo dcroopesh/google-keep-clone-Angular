@@ -20,4 +20,7 @@ export class HomeComponent implements OnInit {
   this.route.navigate(['/home/remainder'])
 
  }
+ showArchive(){
+  this.route.navigate(['/home/archive'])
+}
 }
