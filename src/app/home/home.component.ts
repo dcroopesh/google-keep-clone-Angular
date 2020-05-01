@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   }
 
  showNotes(){
-   this.route.navigate(['/home/note'])
+   this.route.navigate(['/home'])
  }
  showRemainders(){
   this.route.navigate(['/home/remainder'])
