@@ -12,12 +12,14 @@
         <div style="height:max-content">
             {{item.description}}
         </div>
-        <div  fxLayout="row" fxLayoutAlign="space-between center">  
+    
+        <div fxLayout="row"  fxLayoutAlign="space-between center">  
             <app-reminder class="icons"></app-reminder>
             <app-collaborator class="icons"></app-collaborator>
             <app-color class="icons"></app-color>
             <app-image class="icons"></app-image>
-            <app-archive class="icons"></app-archive>
+            <app-archive *ngIf="! item.isArchived" class="icons"></app-archive>
+            <app-unarchive *ngIf="item.isArchived" (onUnArchive)=archive() [noteId]="noteId"class="icons"></app-unarchive>
             <app-more class="icons" [noteId]="noteId" (ondelete)=send($event)></app-more>
         </div>
     
