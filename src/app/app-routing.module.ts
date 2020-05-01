@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'icons' , component: IconsComponent},
   { path: 'cnote' , component: CreateNoteComponent},
   { path: 'home' , component: HomeComponent ,
-    children : [{path : 'note' , component : NotesComponent},
+    children : [{path : '' , component : NotesComponent},
                 {path : 'remainder' , component : RemaindersComponent}]
  },
   { path: '**' , component: PageNotFoundComponent},
