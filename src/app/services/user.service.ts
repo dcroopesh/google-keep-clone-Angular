@@ -70,5 +70,27 @@ export class UserService {
   return this.apiRequest.getRequest(environment.BaseNotesURL + 'getNotesList/',httpOptions)
   }
 
+  updateNotes(dataObject){
+    const httpOptions = {
+    
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.postRequest(environment.BaseNotesURL + 'updateNotes/',dataObject,httpOptions)
+    
+  }
+
+  deleteNotes(dataObject){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseNotesURL + 'trashNotes',dataObject,httpOptions);
+  }
+
 }
 
