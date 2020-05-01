@@ -10,7 +10,7 @@
 </mat-card>
 </div>
 <div *ngIf="! hidden">
-<mat-card class="container" fxFlex.lt-md = "1 1 96%"    fxFlexOffset.lt-md="2%"fxFlexOffset="30%" fxLayout="column" fxLayoutAlign="space-between start" fxLayoutGap="4%">
+<mat-card class="container" id="container" fxFlex.lt-md = "1 1 96%"    fxFlexOffset.lt-md="2%"fxFlexOffset="30%" fxLayout="column" fxLayoutAlign="space-between start" fxLayoutGap="4%">
     
 
     <div contenteditable="true" id="title" class="title" data-text="Title"></div>
@@ -19,7 +19,16 @@
 
     <div style="width:100%; position:relative ; top:0px"> 
     
-    <app-icons (onClose)=save($event) ></app-icons>
+    <div fxLayout="row" fxLayoutAlign="space-between center">  
+        <app-reminder></app-reminder>
+        <app-collaborator></app-collaborator>
+        <app-color (color)="getColor($event)"></app-color>
+        <app-image></app-image>
+        <app-archive></app-archive>
+        <app-more></app-more>
+        <app-close (onClose)=save($event)></app-close>
+    </div>
+
 </div>
 
 </mat-card>
