@@ -19,13 +19,16 @@ export class NotesComponent implements OnInit {
   }
 
   displayNotes(){
+    
+    this.note = []
     console.log("123")
     this.requests.getNotes()
     .subscribe((response) => {
       this.notes = response['data']['data']
       for (var i =0 ; i < this.notes.length ;i++ ){
         
-        if (! this.notes[i]['isDeleted']){
+      
+        if ( ! (this.notes[i]['isDeleted'] || this.notes[i]['isArchived']) ){
          
           this.note.push(this.notes[i]);
         
