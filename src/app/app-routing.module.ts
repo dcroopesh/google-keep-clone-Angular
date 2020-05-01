@@ -12,6 +12,8 @@ import { CreateNoteComponent } from './create-note/create-note.component';
 import { NotesComponent } from './notes/notes.component';
 import { RemaindersComponent } from './remainders/remainders.component';
 import { DisplayNoteComponent } from './display-note/display-note.component';
+import { ArchiveComponent } from './Icons/archive/archive.component';
+import { ArchiveSidenavComponent } from './archive-sidenav/archive-sidenav.component';
 
 
 const routes: Routes = [
@@ -28,7 +30,8 @@ const routes: Routes = [
   { path: 'cnote' , component: CreateNoteComponent},
   { path: 'home' , component: HomeComponent ,
     children : [{path : '' , component : NotesComponent},
-                {path : 'remainder' , component : RemaindersComponent}]
+                {path : 'remainder' , component : RemaindersComponent},
+                { path: 'archive' , component: ArchiveSidenavComponent}, ]
  },
   { path: '**' , component: PageNotFoundComponent},
   
