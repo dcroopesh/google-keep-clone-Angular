@@ -1,0 +1,31 @@
+<div style="cursor: pointer;">
+    
+    <mat-icon (click)="display()">palette</mat-icon>
+    
+    <mat-card class="colors" *ngIf="displayColor">
+        
+        <div fxLayout="column" fxLayoutGap="5%">        
+            <div fxLayout="row" fxLayoutGap="3%" fxLayoutAlign="space-evenly center" >
+                <div class="white size" (click)= "send('#ffffff')"></div>
+                <div class="salmon size" (click)= "send('#f28b82')"></div>
+                <div class="yellow size" (click)= "send('#fbbc04')"></div>
+                <div class="lite-yellow size" (click)= "send('#fff475')"></div>
+            </div>
+    
+            <div fxLayout="row wrap" fxLayoutGap="4%" fxLayoutAlign="space-evenly center">
+                <div class="green size" (click)= "send('#ccff90')"></div>
+                <div class="blue size" (click)= "send('#a7ffeb')"></div>
+                <div class="lite-blue size" (click)= "send('#cbf0f8')"></div>
+                <div class="purple size" (click)= "send('#aecbfa')"></div>
+            </div>
+        
+            <div fxLayout="row wrap" fxLayoutGap="4%" fxLayoutAlign="space-evenly center">
+                <div class="magenta size" (click)= "send('#d7aefb')"></div>
+                <div class="pink size" (click)= "send('#fdcfe8')"></div>
+                <div class="lite-chocolate size" (click)= "send('#e6c9a8')"></div>
+                <div class="gray size" (click)= "send('#e8eaed')"></div>
+            </div>
+        </div>
+    </mat-card>
+
+</div>
