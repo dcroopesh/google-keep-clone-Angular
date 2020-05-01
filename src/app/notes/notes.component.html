@@ -1,2 +1,3 @@
-<app-create-note style="width:100%; position: relative;top: 20%;"></app-create-note>
+<app-create-note (onNoteCreate)=callDisplay($event) style="width:100%; position: relative;top: 20%;"></app-create-note>
 
+<app-display-note [notesObjects]="note" (onDelete)=callDisplay($event) style="margin-top: 5%;"></app-display-note>
