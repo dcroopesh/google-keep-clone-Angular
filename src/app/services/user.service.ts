@@ -114,5 +114,46 @@ export class UserService {
     }
     return this.apiRequest.postRequest(environment.BaseNotesURL + 'archiveNotes/',dataObject,httpOptions);
   }
+
+  getNoteLabelList(){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.getRequest(environment.BaseLabelURl + 'getNoteLabelList/',httpOptions)
+
+  }
+
+  noteLabels(dataObject){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.postRequest(environment.BaseLabelURl,dataObject,httpOptions);
+
+  
+  }
+
+  deleteNoteLabel(labelID){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.deleteRequest('http://fundoonotes.incubation.bridgelabz.com/api/noteLabels/' + labelID + '/deleteNoteLabel',httpOptions)
+    
+  }
+
+
 }
 
