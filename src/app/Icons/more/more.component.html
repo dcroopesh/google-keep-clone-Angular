@@ -2,6 +2,19 @@
 
 <mat-icon (click)="displayLabel()" matTooltip="more">more_vert</mat-icon>
 
-<mat-card  *ngIf="display" >
-    <div (click)="deleteNote()">Delete Note</div>
-</mat-card> 
+<div  class = "menu" *ngIf="display" >
+    <button mat-button *ngIf="newNote" (click)="deleteNote()">Delete Note</button>
+    <button mat-button (click)="showLabels()">Add Label</button>
+</div>
+
+
+    <div class = "menu" *ngIf="show" >
+        <div class="labels">Labels</div>
+        <div *ngFor="let label of labels;index as i">
+        <mat-checkbox (click)="selectLabel(label,i)">{{label.label}}</mat-checkbox>
+        </div>
+    </div> 
+  
+</div> 
+
+ 
