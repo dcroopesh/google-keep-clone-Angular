@@ -20,6 +20,12 @@ export class HttpService {
     return this.http.get(requestAPI,{headers : httpOptions})
   }
 
+  deleteRequest(requestAPI : string,httpOptions){
+
+    return this.http.delete(requestAPI,{ headers : httpOptions});
+    
+  }
+
   getEncodData(toConvert) { 
     const formBody = []; 
     for (const property in toConvert) { 
