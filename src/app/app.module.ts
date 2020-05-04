@@ -23,6 +23,8 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 import { UtilityService } from './services/utility.service';
 import { UserService } from './services/user.service';
@@ -46,7 +48,9 @@ import { CloseComponent } from './Icons/close/close.component';
 import { PinComponent } from './Icons/pin/pin.component';
 import { ArchiveSidenavComponent } from './archive-sidenav/archive-sidenav.component';
 import { UnarchiveComponent } from './Icons/unarchive/unarchive.component';
-
+import { LabelsComponent } from './labels/labels.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DataService } from './services/data.service';
 
 
 @NgModule({
@@ -74,7 +78,9 @@ import { UnarchiveComponent } from './Icons/unarchive/unarchive.component';
     CloseComponent,
     PinComponent,
     ArchiveSidenavComponent,
-    UnarchiveComponent
+    UnarchiveComponent,
+    LabelsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -94,7 +100,9 @@ import { UnarchiveComponent } from './Icons/unarchive/unarchive.component';
     MatSidenavModule,
     MatDividerModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCheckboxModule,
+    MatChipsModule
     
     
   ],
@@ -102,6 +110,8 @@ import { UnarchiveComponent } from './Icons/unarchive/unarchive.component';
     HttpService,
     UtilityService,
     UserService,
+    DataService,
+    
    
   ],
   bootstrap: [AppComponent]
