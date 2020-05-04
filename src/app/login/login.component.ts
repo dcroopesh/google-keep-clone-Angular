@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     this.requests.login(dataObject)
     .subscribe((response) =>{
       localStorage.setItem("token",response.body['id'])
+      localStorage.setItem("userId",response.body['userId'])
       this.util.snackBar("Success","Login Successful",1000);
       this.router.navigate(['/home']);
     
