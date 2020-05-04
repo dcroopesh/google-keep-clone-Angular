@@ -1,0 +1,34 @@
+<!-- <mat-dialog-content fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="3%">
+    <div contenteditable="true" id="title" class="title" data-text="Title">{{ title  }}</div>
+   
+    <div contenteditable="true" id="description" class="title" data-text="Take a note...">{{ description }}</div>
+
+    <div style="width:100%; position:relative ; top:0px"> </div>
+    
+    <app-icons (onClose)="send($event)" ></app-icons>
+</mat-dialog-content> -->
+
+
+<mat-dialog-content fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="3%">
+
+    <div>Edit Label</div>
+    
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="2%">
+        <mat-icon (click)="clearText()">close</mat-icon>
+
+        <input  mdInput [(ngModel)]="inputLabelText" type="text" placeholder="Create New Label">
+
+        <mat-icon (click)="addLabel()">check</mat-icon>
+    </div>
+
+    <div *ngFor="let label of labels;index as i" >
+        <div (mouseenter)="showDelete(i)" (mouseleave)="hideDelete(i)"fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="2%">
+        <mat-icon *ngIf="onLabel[i]" (click)="deleteLabel(label,i)">delete</mat-icon>
+        <mat-icon *ngIf="! onLabel[i]">label</mat-icon>
+        <div>{{label['label']}}</div>
+        <mat-icon>edit</mat-icon>
+        </div>
+    </div>
+    <button mat-button>Done</button>
+
+</mat-dialog-content>
