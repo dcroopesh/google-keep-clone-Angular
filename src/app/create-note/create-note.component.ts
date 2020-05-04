@@ -16,9 +16,14 @@ export class CreateNoteComponent implements OnInit{
   noteColour="#ffffff";
   dataObject;
   archive = false;
+  labels ;
+  removable = true;
+  selectable = true;
+  labelsId;
+
   @Output() onNoteCreate = new EventEmitter<string>();
 
-  
+  newNote = false;
   constructor(private requests : UserService ,private util : UtilityService) {
 
    }
@@ -28,10 +33,6 @@ export class CreateNoteComponent implements OnInit{
 
   }
 
-  ngDoCheck()	
-{
-
-}
 
   ngAfterContentInit(): void{
    
@@ -45,13 +46,17 @@ export class CreateNoteComponent implements OnInit{
 
   save(message?){
 
+  if(this.labels == null){
+  this.labelsId = [ ];
+  }
+
    this.dataObject =  {
       title: document.getElementById("title").textContent,
       description: document.getElementById("description").textContent,
       isPined: false,
-      color: this.noteColour,
+      color: this.noteColour,   
       isArchived: this.archive,
-      labelIdList: [],
+      labelIdList: this.labelsId,
       reminder: '',
       collaberators: []
     }
@@ -59,7 +64,7 @@ export class CreateNoteComponent implements OnInit{
     this.noteColour = "#ffffff";
     this.archive = false;
 
-   this.requests.createNotes(this.dataObject)
+   this.requests.createNotes(this.dataObject) 
     .subscribe((response) =>{
       console.log("Note created")
       this.hidden = !this.hidden;
@@ -81,6 +86,18 @@ export class CreateNoteComponent implements OnInit{
     this.save();
   }
 
-  
-  
+  label(label){
+    console.log(this.labels)
+    this.labels = label;
+    this.labelsId = label.id;
+  }
+
+  remove(label): void {
+    const index = this.labels.indexOf(label);
+
+    if (index >= 0) {
+      this.labels.splice(index, 1);
+    }
+  }
+
 }
