@@ -155,5 +155,20 @@ export class UserService {
   }
 
 
+  getNotesListByLabel(labelname){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.postRequest(environment.BaseNotesURL+ 'getNotesListByLabel/' + labelname,{},httpOptions);
+
+
+  }
+
+
 }
 
