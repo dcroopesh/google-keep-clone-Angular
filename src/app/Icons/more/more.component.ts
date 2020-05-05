@@ -26,8 +26,6 @@ export class MoreComponent implements OnInit {
     
     this.data.label.subscribe(next =>{
       this.labels = next;
-      console.log("more")
-      console.log(this.labels)
     })
 
     for(let i=0; i< this.labels.length;i++){
@@ -55,7 +53,6 @@ export class MoreComponent implements OnInit {
     
     this.requests.deleteNotes(dataObject).subscribe(
       (response) =>{
-        console.log(response);
         this.displayLabel();
         this.ondelete.emit("note deleted");
 
