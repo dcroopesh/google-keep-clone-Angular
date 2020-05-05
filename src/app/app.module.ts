@@ -51,7 +51,10 @@ import { UnarchiveComponent } from './Icons/unarchive/unarchive.component';
 import { LabelsComponent } from './labels/labels.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DataService } from './services/data.service';
-
+import { LabelsSidenavComponent } from './labels-sidenav/labels-sidenav.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -80,6 +83,7 @@ import { DataService } from './services/data.service';
     ArchiveSidenavComponent,
     UnarchiveComponent,
     LabelsComponent,
+    LabelsSidenavComponent,
     
   ],
   imports: [
@@ -102,7 +106,11 @@ import { DataService } from './services/data.service';
     MatDialogModule,
     MatTooltipModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgbModule
+    
     
     
   ],
@@ -111,6 +119,7 @@ import { DataService } from './services/data.service';
     UtilityService,
     UserService,
     DataService,
+    MatDatepickerModule
     
    
   ],
