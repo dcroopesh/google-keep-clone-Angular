@@ -14,6 +14,7 @@ import { RemaindersComponent } from './remainders/remainders.component';
 import { DisplayNoteComponent } from './display-note/display-note.component';
 import { ArchiveComponent } from './Icons/archive/archive.component';
 import { ArchiveSidenavComponent } from './archive-sidenav/archive-sidenav.component';
+import { LabelsSidenavComponent } from './labels-sidenav/labels-sidenav.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,9 @@ const routes: Routes = [
   { path: 'home' , component: HomeComponent ,
     children : [{path : '' , component : NotesComponent},
                 {path : 'remainder' , component : RemaindersComponent},
-                { path: 'archive' , component: ArchiveSidenavComponent}, ]
+                { path: 'archive' , component: ArchiveSidenavComponent},
+                { path: 'label/:labelname' , component: LabelsSidenavComponent}, ]
+              
  },
   { path: '**' , component: PageNotFoundComponent},
   
