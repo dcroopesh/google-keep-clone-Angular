@@ -21,13 +21,23 @@
         <div *ngFor="let label of labels">
         <mat-chip (removed)="remove(label)" [removable]="removable" [selectable]="selectable">{{label.label}}
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon></mat-chip>
-
         </div>
     </mat-chip-list>
+
+    <mat-chip-list fxFlexAlign="start" *ngIf="remainderDate">
+        
+        <mat-chip (removed)="removeRemainder()" [removable]="removable" [selectable]="selectable">
+            <mat-icon>schedule</mat-icon>
+            {{ displayDate }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        
+    </mat-chip-list>
+
     <div style="width:100%; position:relative ; top:0px"> 
     
     <div fxLayout="row" fxLayoutAlign="space-between center">  
-        <app-reminder></app-reminder>
+        <app-reminder (OnDateSelect)="getSelectedDate($event)"></app-reminder>
         <app-collaborator></app-collaborator>
         <app-color (color)="getColor($event)"></app-color>
         <app-image></app-image>
