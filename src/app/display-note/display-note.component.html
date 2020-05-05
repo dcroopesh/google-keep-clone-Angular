@@ -1,27 +1,49 @@
-<div class="container" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="3%">
+<div class="container" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="2%">
     
     
-    <mat-card  *ngFor="let item of notesObjects.slice().reverse()"  style="background-color: {{item.color}}"   fxLayout="column" fxLayoutAlign="space-between start" fxLayoutAlign="8%">
+    <mat-card class="mat-card" *ngFor="let item of notesObjects.slice().reverse()"  style="background-color: {{item.color}}"   fxLayout="column" fxLayoutAlign="space-between start"
+    fxFlex.lt-md = "1 1 97%" fxFlexOffset.lt-md="5%" (mouseover)=getItem(item)>
     
 
                    
-        <div id="title" (click)="showDialog(item)" (mouseover)=getItem(item)><b>{{item.title}}</b>
+        <div id="title" (click)="showDialog(item)" ><b>{{item.title}}</b>
             
         </div>
-            <!-- <div>{{item.isDeleted}}</div> -->
+
         <div style="height:max-content">
             {{item.description}}
         </div>
+
+        
+        
+
+        <mat-chip-list fxFlexAlign="start">
+            <div *ngFor="let label of item.noteLabels">
+            <mat-chip >{{label.label}}
+            <mat-icon >cancel</mat-icon></mat-chip>
     
-        <div fxLayout="row"  fxLayoutAlign="space-between center">  
+            </div>
+        </mat-chip-list>
+
+        <!-- <mat-chip-list fxFlexAlign="start">
+            <mat-chip><mat-icon>schedule</mat-icon> {{ item.reminder[0] }}
+            <mat-icon >cancel</mat-icon></mat-chip>
+    
+        
+        </mat-chip-list> -->
+    
+        <div style="width:100%">        
+            <div fxLayout="row"  fxLayoutAlign="space-between center" style="width:100%">  
             <app-reminder class="icons"></app-reminder>
             <app-collaborator class="icons"></app-collaborator>
             <app-color class="icons"></app-color>
             <app-image class="icons"></app-image>
             <app-archive *ngIf="! item.isArchived" class="icons"></app-archive>
-            <app-unarchive *ngIf="item.isArchived" (onUnArchive)=archive() [noteId]="noteId"class="icons"></app-unarchive>
-            <app-more class="icons" [noteId]="noteId" (ondelete)=send($event)></app-more>
+            <app-unarchive *ngIf="item.isArchived" (onUnArchive)=unarchive() [noteId]="noteId" class="icons"></app-unarchive>
+            <app-more class="icons" [newNote]="newNote" [noteId]="noteId" (ondelete)=send($event)></app-more>
         </div>
+    </div>
+
     
     
     </mat-card>
