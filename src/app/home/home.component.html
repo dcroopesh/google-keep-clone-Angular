@@ -1,13 +1,13 @@
-<div class="toolbar">
+<div class="">
 
-    <mat-toolbar class="colour" fxLayout="row" fxLayoutGap="3%" fxLayout="space-between center">
+    <mat-toolbar class="colour" fxLayout="row" fxLayout.lt-md="row" fxLayoutGap.lt-md="2%"fxLayoutGap="3%" fxLayout="space-between center" >
         <button mat-icon-button (click)="sidenav.toggle()" >
         <mat-icon>menu</mat-icon></button>
         
         <img src="../../assets/images/keep.jpeg">
         <h2 >fundooNotes</h2>
               
-    <mat-card class="search-bar" fxLayout="row" fxLayoutGap="3%" fxLayoutAlign="start center">
+    <mat-card class="search-bar" fxLayout="row" fxLayout.lt-md="row"fxLayoutGap="3%"  fxLayoutAlign="start center">
         <mat-icon >search</mat-icon>
         <input type="text" placeholder="Search..">
     </mat-card>
@@ -15,29 +15,69 @@
         <mat-icon>shopping_cart</mat-icon>
         <img src="../../assets/images/BlankImage.jpg" alt="dp">
     </mat-toolbar>
-    <mat-divider></mat-divider>
+    
 </div>
-
+<mat-divider></mat-divider>
 <mat-sidenav-container class="example-container" >
 
 
         <mat-sidenav #sidenav mode="side">
             <div class="side-nav" fxLayout="row" fxLayoutAlign="start center" (click)=showNotes()>
-                <mat-icon fxFlexOffset="3%">emoji_objects</mat-icon>
+                <!-- <mat-icon >emoji_objects</mat-icon> -->
+                <svg width=24 height=24 fxFlexOffset="3%">
+                    <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"></path></svg>
+                
                 <p fxFlexOffset="25%">Notes</p>
             </div>
 
             <div class="side-nav" fxLayout= "row" fxLayoutAlign="start center" (click)=showRemainders()>
-                <mat-icon fxFlexOffset="3%">add_alert</mat-icon>
+                <svg width=24 height=24 fxFlexOffset="3%">
+                    <path d="M18 17v-6c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v6H4v2h16v-2h-2zm-2 0H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6zm-4 5c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"></path></svg>
+            
                 <p fxFlexOffset="25%">Remainders</p>
             </div>
 
+
             <mat-divider class="divider"></mat-divider>
 
-            <div class="side-nav" style="margin-top:7%;"fxLayout="row" fxLayoutAlign="start center" (click)=showArchive()>
-                <mat-icon fxFlexOffset="3%">archive</mat-icon>
+            <div class="" style="margin-top:7%;"fxLayout="row" fxLayoutAlign="start center">
+                <p fxFlexOffset="4%">Lables</p>
+                <button mat-button fxFlexOffset="9%"  (click)="showDialog()">EDIT</button>
+            </div>
+
+    
+                <div class="side-nav" *ngFor="let label of labels"(click)="showLabels(label['label'])"  fxLayout= "row" fxLayoutAlign="start center">                
+                    <!-- <mat-icon >label</mat-icon> -->
+                    <svg width=24 height=24 fxFlexOffset="3%">
+                        <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16zM16 17H5V7h11l3.55 5L16 17z">
+
+                        </path>
+                    </svg>
+                    <p fxFlexOffset="25%">{{label['label']}}</p>
+            
+                </div>
+            
+
+
+            <mat-divider class="divider"></mat-divider>
+
+            <div class="side-nav" style="margin-top:7%;"fxLayout="row" fxLayoutAlign="start center" (click)=showArchive() >
+                <svg width=24 height=24 fxFlexOffset="3%">
+                    <path d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM6.24 5h11.52l.83 1H5.42l.82-1zM5 19V8h14v11H5zm11-5.5l-4 4-4-4 1.41-1.41L11 13.67V10h2v3.67l1.59-1.59L16 13.5z">
+                        </path>
+                </svg>
                 <p fxFlexOffset="25%">Archive</p>
             </div>
+
+            <div class="side-nav" style="margin-top:7%;"fxLayout="row" fxLayoutAlign="start center">
+                <svg width=24 height=24 fxFlexOffset="3%">
+                    <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z">
+                        </path>
+                </svg>
+                <p fxFlexOffset="25%">Trash</p>
+            </div>
+
+           
         </mat-sidenav>
         <mat-sidenav-content>
                 <router-outlet></router-outlet>
