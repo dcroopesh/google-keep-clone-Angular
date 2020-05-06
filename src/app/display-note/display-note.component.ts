@@ -19,6 +19,10 @@ export class DisplayNoteComponent implements OnInit,DoCheck {
   newNote="True"
   noteId;
   remainderArray = [];
+  displayDate = [];
+
+  month = ['Jan','Feb','March','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']
+
   constructor(private requests : UserService,public dialog: MatDialog) {
     console.log("abc",this.notesObjects);
 
@@ -29,13 +33,30 @@ export class DisplayNoteComponent implements OnInit,DoCheck {
   
 
   ngDoCheck()	{
-    console.log(this.notesObjects.length)
+    var n = this.notesObjects;
+      for(let i = 0; i < n.length;i++){
 
-    for(let i = 0 ; i < this.notesObjects.length ; i++){
-      
-      console.log(this.notesObjects[i]['reminder'][0])
+      let dateUTC = n[i]['reminder'][0]
+          if (dateUTC != undefined){
+            let dateIST = new Date(dateUTC);
+
+      this.displayDate[i]= ' ' +  this.month[dateIST.getMonth()] + ' ';
+      this.displayDate[i] += dateIST.getDate() + ' ';
+      var hour = dateIST.getHours() , meridian = "AM"
+      if(hour > 12){
+        hour -= 12;
+        meridian = "PM"
+      }
+  
+      this.displayDate[i] += hour + ':' + (dateIST.getMinutes()<10?'0':'') + dateIST.getMinutes() + ' ' + meridian;
     }
+    else{
+      this.displayDate[i] = '';
+    }
+    }
+    this.displayDate = this.displayDate.reverse();
   }
+
 
   Show(){
     this.show = !this.show;

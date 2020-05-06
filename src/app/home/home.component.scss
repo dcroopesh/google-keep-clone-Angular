@@ -1,11 +1,31 @@
 .toolbar{
     
-    height: 9%;
+    height: 70px;
     margin: 0;
 }
 
 .colour{
     background-color: white;
+}
+
+
+.sign-out{
+    position: absolute;
+    display: block;
+    z-index: 2;
+    top:65px;
+    right: 20px;
+    width: 200px; 
+    height: 100px;
+    //border: 1px solid black;
+    background-color: white;
+}
+
+.sign-out-btn{
+    position: absolute;
+    top:10px;
+    margin-left: 70px;
+    //margin: auto;
 }
 
 .size{
@@ -16,13 +36,13 @@
 
 .example-container {
     position: absolute;
-    top:10%;
+    top:65px;
     bottom: 0;
     left: 0;
     right: 0;
     background-color: white;
     
-  }
+}
 
 mat-sidenav{
     padding-top: 4px;
@@ -58,7 +78,7 @@ img{
 
 .side-nav {
     width: 99%;
-    background-color : #ebeae6;
+    // background-color : #ebeae6;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     margin-bottom: 2px;
@@ -73,6 +93,12 @@ p{
 
     background-color: rgb(241, 237, 237);
     width: 60%;
+    height: 40px;
+    
+}
+
+.search-bar:hover{
+    background-color: white;
 }
 
 .search-bar > input{
@@ -80,34 +106,40 @@ p{
     border: 0;
     outline: none;
     margin: 0;
+    background-color: inherit;
+    
+}
+
+.search-bar > input:hover{
+    background-color: white;
+
 }
 
 
 
 @media only screen and (max-width: 500px) {
     mat-sidenav{
-      width:70%;
+      width:80%;
     }
 
     .search-bar{
-      display:none;
+      width:10% !important;
+        height: 50px;
 
       }
 }   
 
-mat-divider{
-    
-    border-top-color:#f3cd5b;
 
-}
-.divider{
-    margin-top: 8%;
-    border-top-color:#f3cd5b;
+
+
+.label-names{
+    height: 20px;
 }
 
-mat-sidenav-content{
-   // background-color: #feefc3;;
+mat-toolbar > button{
+    outline: none;
 }
+
 
 
   

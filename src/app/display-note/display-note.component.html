@@ -1,11 +1,11 @@
-<div class="container" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="2%">
+<div class="container" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="3%">
     
     
-    <mat-card class="mat-card" *ngFor="let item of notesObjects.slice().reverse()"  style="background-color: {{item.color}}"   fxLayout="column" fxLayoutAlign="space-between start"
+    <mat-card class="mat-card" *ngFor="let item of notesObjects.reverse();index as i"  style="background-color: {{item.color}}"   fxLayout="column" fxLayoutAlign="space-between start"
     fxFlex.lt-md = "1 1 97%" fxFlexOffset.lt-md="5%" (mouseover)=getItem(item)>
     
 
-                   
+        
         <div id="title" (click)="showDialog(item)" ><b>{{item.title}}</b>
             
         </div>
@@ -20,17 +20,19 @@
         <mat-chip-list fxFlexAlign="start">
             <div *ngFor="let label of item.noteLabels">
             <mat-chip >{{label.label}}
-            <mat-icon >cancel</mat-icon></mat-chip>
+            <mat-icon matChipRemove >cancel</mat-icon></mat-chip>
     
             </div>
         </mat-chip-list>
 
-        <!-- <mat-chip-list fxFlexAlign="start">
-            <mat-chip><mat-icon>schedule</mat-icon> {{ item.reminder[0] }}
-            <mat-icon >cancel</mat-icon></mat-chip>
+        <mat-chip-list fxFlexAlign="start" *ngIf="displayDate[i]">
+            
+            <mat-chip><mat-icon>schedule</mat-icon>&nbsp;
+                <div style="font-size: 12px;"> {{ displayDate[i] }} </div>
+                &nbsp;<mat-icon matChipRemove>cancel</mat-icon></mat-chip>
     
         
-        </mat-chip-list> -->
+        </mat-chip-list>
     
         <div style="width:100%">        
             <div fxLayout="row"  fxLayoutAlign="space-between center" style="width:100%">  

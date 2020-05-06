@@ -1,1 +1,14 @@
-<mat-icon  matTooltip="Collaborator">person_add</mat-icon>
+<mat-icon  matTooltip="Collaborator" (click)="showCollaborator()">person_add</mat-icon>
+
+
+<div class="container" *ngIf="show">
+
+    <div>Collaborators</div>
+    <mat-divider></mat-divider>
+    <div>
+        <p>firstname lastname(Owner)</p>
+        <p>ower@gmail.com</p>
+    </div>
+    <mat-icon>person_add</mat-icon>
+<button mat-button (click)="showCollaborator()">Cancel</button>
+</div>

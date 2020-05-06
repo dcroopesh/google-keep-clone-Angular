@@ -1,42 +1,62 @@
-mat-card{
+.mat-card{
 
-    margin-top: 4%;
+    margin-top: 2%;
     width:30%;
-    
-    box-shadow: 0 5px 10px rgba(0,0,0,0.30) !important;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.30) !important;
+    min-height: 20%;
+    border-radius: 10px;
+    border : 1px solid  rgba(0,0,0,0.10);
+    margin-bottom: 15px ;
 
-   
 }
 
 .container{
     
-    width:60%;
+    width:800px;
     margin: auto;
-    height:auto;
-   
+    height:100%;
+
 }
+
+
 
 
 mat-card > div{
     word-break: break-all;
+    margin-bottom: 5px ;
+
 
 }
 
 .icons{
-    color: rgb(134, 131, 131);
-    display: none;
-    
+    // color: rgb(134, 131, 131);
+    // display: none;
+    visibility: hidden;
     
 }  
 
 
 mat-card:hover{
     .icons{
+        visibility: visible;
         display: block;
     }
 }
 
+// [hidden]{
+//     display: none !important;
+// }
 
+
+@media only screen and (max-width: 500px) {
+    .container {
+      width:auto;
+      height:auto;
+    }
+    .mat-card{
+        margin: 1% 2%;
+    }
+}
 
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-collaborator',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollaboratorComponent implements OnInit {
 
-  constructor() { }
+  @Output() onCollaboratorClick = new EventEmitter();
+  show = false;
+  firstName ;
+  lastName ;
+  email ;
+  constructor() { 
+    this.firstName = localStorage.getItem('firstName');
+    this.lastName = localStorage.getItem('lastName');
+    this.email = localStorage.getItem('email');
+
+  }
 
   ngOnInit(): void {
   }
 
+  showCollaborator(){
+    this.show = ! this.show;
+    //this.onCollaboratorClick.emit();
+  }
 }

@@ -1,0 +1,52 @@
+.container{
+    position: absolute;
+    display: inline-block;
+    width:270px;
+    height: 280px;
+    border: 1px solid rgba($color: #000000, $alpha: .20);
+    z-index: 1;
+    background-color: white;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+
+
+// .mat-datepicker-content .mat-calendar {
+//     width: 200px ; 
+    
+// }
+
+// .btn-outline-primary{
+//     width:100px !important;
+// }
+
+
+.ngb-tp-input-container{
+    width:1em !important;
+}
+
+.time{
+    height: 20%;
+    width:80%;
+    margin: auto;
+}
+
+
+.time:hover{
+    background-color: rgb(194, 192, 192);
+}
+
+
+.mat-form-field{
+    padding-left: 0;
+    
+    width: 100%;
+}
+
+.save{
+    margin-left: 3%;
+}
+
+
+  

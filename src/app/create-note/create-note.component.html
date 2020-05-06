@@ -10,7 +10,7 @@
 </mat-card>
 </div>
 <div *ngIf="! hidden">
-<mat-card class="container" id="container" fxFlex.lt-md = "1 1 96%" fxFlexOffset.lt-md="2%" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="4%">
+<mat-card class="container" id="container" fxFlex.lt-md = "1 1 96%" fxFlexOffset.lt-md="2%" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="1%">
     
 
     <div contenteditable="true" id="title" class="title" data-text="Title"></div>
@@ -27,8 +27,9 @@
     <mat-chip-list fxFlexAlign="start" *ngIf="remainderDate">
         
         <mat-chip (removed)="removeRemainder()" [removable]="removable" [selectable]="selectable">
-            <mat-icon>schedule</mat-icon>
+            <mat-icon>schedule</mat-icon>&nbsp;
             {{ displayDate }}
+            &nbsp;
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
         
@@ -38,7 +39,7 @@
     
     <div fxLayout="row" fxLayoutAlign="space-between center">  
         <app-reminder (OnDateSelect)="getSelectedDate($event)"></app-reminder>
-        <app-collaborator></app-collaborator>
+        <app-collaborator (onCollaboratorClick)="hideNote()"></app-collaborator>
         <app-color (color)="getColor($event)"></app-color>
         <app-image></app-image>
         <app-archive (onArchive)=Archive()></app-archive>
