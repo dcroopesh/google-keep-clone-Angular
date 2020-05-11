@@ -1,6 +1,6 @@
 <div style="cursor: pointer;">
 
-<mat-icon (click)="displayLabel()" matTooltip="more">more_vert</mat-icon>
+<mat-icon (click)="displayLabel()" style="margin-top: 6px;" matTooltip="more">more_vert</mat-icon>
 
 <div  class = "menu" *ngIf="display" >
     <button mat-button *ngIf="newNote" (click)="deleteNote()">Delete Note</button>
