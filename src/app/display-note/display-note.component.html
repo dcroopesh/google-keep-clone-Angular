@@ -1,11 +1,10 @@
 <div class="container" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="3%">
     
     
-    <mat-card class="mat-card" *ngFor="let item of notesObjects.reverse();index as i"  style="background-color: {{item.color}}"   fxLayout="column" fxLayoutAlign="space-between start"
-    fxFlex.lt-md = "1 1 97%" fxFlexOffset.lt-md="5%" (mouseover)=getItem(item)>
+    <mat-card class="mat-card" *ngFor="let item of notesObjects.reverse();index as i"  [style.background-color]="item.color"   fxLayout="column" fxLayoutAlign="space-between start"
+    fxFlex.lt-md = "1 1 97%" fxFlexOffset.lt-md="5%" (mouseover)=getItem(item) fxLayoutGap="2%">
     
 
-        
         <div id="title" (click)="showDialog(item)" ><b>{{item.title}}</b>
             
         </div>
@@ -15,39 +14,43 @@
         </div>
 
         
-        
-
-        <mat-chip-list fxFlexAlign="start">
+        <mat-chip-list fxFlexAlign="start" >
             <div *ngFor="let label of item.noteLabels">
-            <mat-chip >{{label.label}}
-            <mat-icon matChipRemove >cancel</mat-icon></mat-chip>
-    
+            <mat-chip class="background" [style.background-color]="item.color">{{label.label}}
+            <mat-icon matChipRemove (click)="removeLabel(label)">cancel</mat-icon></mat-chip>
+
             </div>
         </mat-chip-list>
 
-        <mat-chip-list fxFlexAlign="start" *ngIf="displayDate[i]">
+        <mat-chip-list fxFlexAlign="start" *ngIf="displayDate[i]" >
             
-            <mat-chip><mat-icon>schedule</mat-icon>&nbsp;
+            <mat-chip class="background" [style.background-color]="item.color"><mat-icon>schedule</mat-icon>&nbsp;
                 <div style="font-size: 12px;"> {{ displayDate[i] }} </div>
-                &nbsp;<mat-icon matChipRemove>cancel</mat-icon></mat-chip>
-    
+                &nbsp;<mat-icon matChipRemove (click)=removeReminderNotes()>cancel</mat-icon></mat-chip>
         
         </mat-chip-list>
+
+        <div *ngIf="item.collaborators" >
+            <div *ngFor="let user of item.collaborators" fxLayout="row" fxLayoutAlign="space-between center">         
+          
+            <button mat-mini-fab [style.background-color]="item.color"  style="outline: none;border:0;">
+                <div class="user-colab">{{ user.firstName[0] | uppercase}} </div>
+            </button>
+            </div>
+        </div>
     
         <div style="width:100%">        
             <div fxLayout="row"  fxLayoutAlign="space-between center" style="width:100%">  
-            <app-reminder class="icons"></app-reminder>
-            <app-collaborator class="icons"></app-collaborator>
-            <app-color class="icons"></app-color>
-            <app-image class="icons"></app-image>
-            <app-archive *ngIf="! item.isArchived" class="icons"></app-archive>
-            <app-unarchive *ngIf="item.isArchived" (onUnArchive)=unarchive() [noteId]="noteId" class="icons"></app-unarchive>
-            <app-more class="icons" [newNote]="newNote" [noteId]="noteId" (ondelete)=send($event)></app-more>
+                <app-reminder class="icons" (OnDateSelect)="addUpdateReminderNotes($event)"></app-reminder>
+                <app-collaborator class="icons" (click)="showColabDialog()"></app-collaborator>
+                <app-color class="icons" (color)="updateColor($event)"></app-color>
+                <app-image class="icons"></app-image>
+                <app-archive *ngIf="! item.isArchived" class="icons" (onArchive)=archiveNotes()></app-archive>
+                <app-unarchive *ngIf="item.isArchived" (onUnArchive)=unarchive() [noteId]="noteId" class="icons"></app-unarchive>
+                <app-more class="icons" [newNote]="newNote" [noteId]="noteId" (ondelete)=send($event) (onLabelSelect)="addLabel($event)"></app-more>
+            </div>
         </div>
-    </div>
 
-    
-    
     </mat-card>
 
 </div>
