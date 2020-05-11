@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef ,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UserService } from '../services/user.service';
 
@@ -9,11 +9,10 @@ import { UserService } from '../services/user.service';
 })
 export class LabelsComponent implements OnInit {
 
-  labels = []
+  labels = [];
 
   constructor(public dialogRef: MatDialogRef<LabelsComponent>,@Inject(MAT_DIALOG_DATA) public label: any,
   private requests : UserService) {
-    console.log("labelcons")
     this.labels = this.label.label;
    }
 
