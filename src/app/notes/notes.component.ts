@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { UserService } from '../services/user.service';
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.scss']
 })
-export class NotesComponent implements OnInit {
+export class NotesComponent implements OnInit ,DoCheck{
 
   notes ;
   note = [];
@@ -18,32 +18,28 @@ export class NotesComponent implements OnInit {
   
   }
 
+  ngDoCheck(){
+  }
+
   displayNotes(){
     
-    this.note = []
-    console.log("123")
+    let notee = [];
     this.requests.getNotes()
     .subscribe((response) => {
       this.notes = response['data']['data']
       for (var i =0 ; i < this.notes.length ;i++ ){
         
-      
         if ( ! (this.notes[i]['isDeleted'] || this.notes[i]['isArchived']) ){
-         
-          this.note.push(this.notes[i]);
-        
-          }
+          notee.push(this.notes[i]);
+        }
       }
+      this.note = notee;
     },
     (error) =>{
       console.error(error);
     })
   }
 
-  callDisplay(msg){
-    console.log("refresh")
-    console.log(msg)
-    this.displayNotes();
-  }
+  
 
 } 
