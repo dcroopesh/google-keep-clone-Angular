@@ -55,6 +55,9 @@ import { LabelsSidenavComponent } from './labels-sidenav/labels-sidenav.componen
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { CollabDialogComponent } from './collab-dialog/collab-dialog.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +87,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UnarchiveComponent,
     LabelsComponent,
     LabelsSidenavComponent,
+    CollabDialogComponent,
     
   ],
   imports: [
@@ -109,7 +113,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatChipsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgbModule
+    MatMenuModule,
+    MatAutocompleteModule,
+    NgbModule,
+
     
     
     
