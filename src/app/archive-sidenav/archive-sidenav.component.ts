@@ -19,16 +19,17 @@ export class ArchiveSidenavComponent implements OnInit {
 
   displayNotes(){
     
-    this.note = []
+    let notee = []
     this.requests.getArchiveNotesList()
     .subscribe((response) => {
       this.notes = response['data']['data']
       for (var i =0 ; i < this.notes.length ;i++ ){
       
         if (this.notes[i]['isArchived'] && ! this.notes[i]['isDeleted']) {
-            this.note.push(this.notes[i]);
+            notee.push(this.notes[i]);
           }
       }
+      this.note = notee
       
     },
     (error) =>{
