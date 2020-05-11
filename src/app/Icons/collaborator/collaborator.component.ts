@@ -8,14 +8,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class CollaboratorComponent implements OnInit {
 
   @Output() onCollaboratorClick = new EventEmitter();
-  show = false;
-  firstName ;
-  lastName ;
-  email ;
+  
   constructor() { 
-    this.firstName = localStorage.getItem('firstName');
-    this.lastName = localStorage.getItem('lastName');
-    this.email = localStorage.getItem('email');
+    
 
   }
 
@@ -23,7 +18,6 @@ export class CollaboratorComponent implements OnInit {
   }
 
   showCollaborator(){
-    this.show = ! this.show;
-    //this.onCollaboratorClick.emit();
+    this.onCollaboratorClick.emit();
   }
 }
