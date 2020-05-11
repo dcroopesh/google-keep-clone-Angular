@@ -169,6 +169,117 @@ export class UserService {
 
   }
 
+  searchUserList(dataObject){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseUserURL + 'searchUserList/',dataObject,httpOptions)
+  }
+
+
+  changesColorNotes(dataObject){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseNotesURL+ 'changesColorNotes/',dataObject,httpOptions)
+  }
+
+  archiveNotes(dataObject){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseNotesURL+ 'archiveNotes/',dataObject,httpOptions)
+  }
+  
+  addUpdateReminderNotes(dataObject){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseNotesURL + 'addUpdateReminderNotes/',dataObject,httpOptions)
+  }
+
+
+
+  add(labelId,noteId){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseNotesURL + noteId + '/' + 'addLabelToNotes/' + labelId + '/add',{},httpOptions)
+
+  }
+
+  remove(labelId,noteId){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseNotesURL + noteId + '/' + 'addLabelToNotes/' + labelId + '/remove',{},httpOptions)
+
+  }
+
+  removeReminderNotes(dataObject){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseNotesURL + 'removeReminderNotes/',dataObject,httpOptions)
+
+  }
+
+  getReminderNotesList(){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.getRequest(environment.BaseNotesURL + "getReminderNotesList/",httpOptions)
+
+  }
+
+  AddcollaboratorsNotes(dataObject,noteId){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseNotesURL + '/' + noteId + '/AddcollaboratorsNotes',dataObject,httpOptions)
+  }
+
+  removeCollaboratorsNotes(noteId,colabUserId){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.deleteRequest(environment.BaseNotesURL + '/' + noteId + '/removeCollaboratorsNotes/' + colabUserId,httpOptions)
+
+  }
 
 }
 
