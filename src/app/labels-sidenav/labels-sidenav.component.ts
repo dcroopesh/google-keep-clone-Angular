@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, AfterViewChecked, AfterContentChecked, OnChanges } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,41 +7,47 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './labels-sidenav.component.html',
   styleUrls: ['./labels-sidenav.component.scss']
 })
-export class LabelsSidenavComponent implements OnInit {
+export class LabelsSidenavComponent implements OnInit{
 
+  
+  noteArray = [];
+  labelname;
+  notes;
   constructor(private requests : UserService,private route : ActivatedRoute) { 
     this.labelname = this.route.snapshot.paramMap.get("labelname")
-    console.log(this.labelname)
     this.displayNotes();
   }
 
-  noteArray ;
-  labelname;
-  notes;
-  ngOnInit(): void {
-   
    
 
+ 
+  ngOnInit(): void {
+    
   }
 
 
+  // ngOnChanges(){
+  //   this.labelname = this.route.snapshot.paramMap.get("labelname")
+  //   this.displayNotes();
+  // }
+  
+
   displayNotes(){
     let noteLabel;
-    this.noteArray = []
+    let note = []
     this.requests.getNotesListByLabel(this.labelname)
     .subscribe((response) => {
-      console.log(response.body['data'])
         this.notes = response.body['data']['data']
       for (var i =0 ; i < this.notes.length ;i++ ){
       
          noteLabel =  this.notes[i]['noteLabels']
          for (var j =0 ; j < noteLabel.length ;j++ ) {  
            if (noteLabel[j]['label'] === this.labelname){
-              this.noteArray.push(this.notes[i]);
+              note.push(this.notes[i]);
            }
          }
         }
-      
+      this.noteArray = note;
       
     },
     (error) =>{
