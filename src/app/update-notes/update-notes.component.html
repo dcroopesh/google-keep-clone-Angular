@@ -7,5 +7,15 @@
 
     <div style="width:100%; position:relative ; top:0px"> </div>
     
-    <app-icons (onClose)="send($event)" ></app-icons>
+    <div style="width:100%">        
+        <div fxLayout="row"  fxLayoutAlign="space-between center" style="width:100%">  
+        <app-reminder ></app-reminder>
+        <app-collaborator ></app-collaborator>
+        <app-color ></app-color>
+        <app-image ></app-image>
+        <app-archive ></app-archive>
+        <app-unarchive ></app-unarchive>
+        <app-more></app-more>
+        </div>
+    </div>
 </mat-dialog-content>
