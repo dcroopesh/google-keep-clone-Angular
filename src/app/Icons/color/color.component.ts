@@ -11,8 +11,7 @@ export class ColorComponent implements OnInit {
   displayColor = false;
   @Output() color = new EventEmitter<string>();
 
-  constructor() {  console.log("asdsdasd");
-}
+  constructor() {}
 
   ngOnInit(): void {
   }
@@ -22,7 +21,6 @@ export class ColorComponent implements OnInit {
   }
 
   send(color){
-    console.log(color);
     this.display();
     this.color.emit(color);
   }
