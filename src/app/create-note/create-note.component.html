@@ -12,21 +12,22 @@
 <div *ngIf="! hidden">
 <mat-card class="container" id="container" fxFlex.lt-md = "1 1 96%" fxFlexOffset.lt-md="2%" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="1%">
     
-
-    <div contenteditable="true" id="title" class="title" data-text="Title"></div>
-   
-    <div contenteditable="true" id="description" class="title" data-text="Take a note..."></div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" style="width:100%">
+        <div contenteditable="true" id="title" class="title" data-text="Title"></div>
+        <div><app-pin fxFlexAlign="start" (click)="addPin()"></app-pin></div>
+    </div>
+    <div style="width:100%" contenteditable="true" id="description" class="title" data-text="Take a note..."></div>
 
     <mat-chip-list fxFlexAlign="start">
         <div *ngFor="let label of labels">
-        <mat-chip (removed)="remove(label)" [removable]="removable" [selectable]="selectable">{{label.label}}
+        <mat-chip class="background" (removed)="remove(label)"[style.background-color]="noteColour" [removable]="removable" [selectable]="selectable">{{label.label}}
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon></mat-chip>
         </div>
     </mat-chip-list>
 
     <mat-chip-list fxFlexAlign="start" *ngIf="remainderDate">
         
-        <mat-chip (removed)="removeRemainder()" [removable]="removable" [selectable]="selectable">
+        <mat-chip (removed)="removeRemainder()"class="background" [style.background-color]="noteColour" [removable]="removable" [selectable]="selectable">
             <mat-icon>schedule</mat-icon>&nbsp;
             {{ displayDate }}
             &nbsp;
@@ -35,11 +36,22 @@
         
     </mat-chip-list>
 
+    <div *ngIf="collaborators">
+        <div *ngFor="let user of collaborators" fxLayout="row" fxLayoutAlign="space-between center">         
+      
+        <button mat-mini-fab color="accent" [style.background-color]="noteColour">
+            <div class="user-colab">{{ user.firstName[0] | uppercase}} </div>
+        </button>
+
+    </div>
+   
+    </div>
+
     <div style="width:100%; position:relative ; top:0px"> 
     
     <div fxLayout="row" fxLayoutAlign="space-between center">  
         <app-reminder (OnDateSelect)="getSelectedDate($event)"></app-reminder>
-        <app-collaborator (onCollaboratorClick)="hideNote()"></app-collaborator>
+        <app-collaborator (onCollaboratorClick)="showCollaborator()"></app-collaborator>
         <app-color (color)="getColor($event)"></app-color>
         <app-image></app-image>
         <app-archive (onArchive)=Archive()></app-archive>
@@ -51,3 +63,43 @@
 
 </mat-card>
 </div>
+
+<mat-card class="container2" *ngIf="showCollaboratorr" fxLayout="column" fxLayoutGap="2%">
+
+    <div class="col-name">Collaborators</div>
+    <div><mat-divider></mat-divider></div>
+    
+    <div fxLayout="row">
+        <div fxFlexOffset="60px">{{firstName}} {{lastName}} (Owner)</div>&nbsp;&nbsp;
+        <div>{{ email }}</div>
+    </div>
+    
+    <div *ngIf="collaborators">
+        <div *ngFor="let user of collaborators" fxLayout="row" fxLayoutAlign="space-between center">         
+            <div>
+                <div class="user-icon">{{ user.firstName[0] | uppercase}} </div>      
+                <div class="add-user" fxFlexOffset="12px">{{ user.firstName }} {{ user.lastName }}  {{ '<' + user.email + '>'}}</div>
+            </div>
+            <mat-icon fxFlexAlign="center" (click)="removeCollaborator(user)">close</mat-icon>
+        </div>
+    </div>
+    
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="person">       
+            <mat-icon class="add-user" >person_add</mat-icon>
+        </div>
+ 
+        <input [matAutocomplete]="auto" matInput type="text" (keyup)="getUserList()"  [formControl]="textInput" placeholder="Enter person or email to share with" fxFlexOffset="20px">
+    
+        <mat-autocomplete #auto="matAutocomplete" >
+            <mat-option *ngFor="let user of usersDetails" (click)=displayFn(user)>
+            {{ user.firstName }} {{ user.lastName }}  {{ '<' + user.email + '>'}}
+            </mat-option>
+         </mat-autocomplete>
+
+    </div>
+    <div fxLayout="row">
+        <!-- <button mat-button (click)=displayNote()>Cancel</button> -->
+        <button mat-button (click)=displayNote()>Save</button>
+    </div>
+</mat-card>
