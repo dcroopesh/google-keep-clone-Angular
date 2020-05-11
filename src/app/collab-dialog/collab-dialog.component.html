@@ -1,0 +1,39 @@
+<mat-dialog-content *ngIf="showCollaboratorr" fxLayout="column" fxLayoutGap="2%">
+
+    <div class="col-name">Collaborators</div>
+    <div><mat-divider></mat-divider></div>
+    
+    <div fxLayout="row">
+        <div fxFlexOffset="60px">{{firstName}} {{lastName}} (Owner)</div>&nbsp;&nbsp;
+        <div>{{ email }}</div>
+    </div>
+    
+    <div *ngIf="collaborators">
+        <div *ngFor="let user of collaborators" fxLayout="row" fxLayoutAlign="space-between center">         
+            <div>
+                <div class="user-icon">{{ user.firstName[0] | uppercase}} </div>      
+                <div class="add-user" fxFlexOffset="12px">{{ user.firstName }} {{ user.lastName }}  {{ '<' + user.email + '>'}}</div>
+            </div>
+            <mat-icon fxFlexAlign="center" (click)="removeCollaborator(user)">close</mat-icon>
+        </div>
+    </div>
+    
+    <div fxLayout="row" fxLayoutAlign="start center">
+
+        <div class="person">       
+            <mat-icon class="add-user" >person_add</mat-icon>
+        </div>
+ 
+        <input [matAutocomplete]="auto" matInput type="text" (keyup)="getUserList()"  [formControl]="textInput" placeholder="Enter person or email to share with" fxFlexOffset="20px">
+    
+        <mat-autocomplete #auto="matAutocomplete" >
+            <mat-option *ngFor="let user of usersDetails" [value]="user.firstName" (click)=displayFn(user)>
+            {{ user.firstName }} {{ user.lastName }}  {{ '<' + user.email + '>'}}
+            </mat-option>
+         </mat-autocomplete>
+
+    </div>
+    <div fxLayout="row">
+        <button mat-button>Save</button>
+    </div>
+</mat-dialog-content>
