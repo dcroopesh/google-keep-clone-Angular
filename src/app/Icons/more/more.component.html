@@ -2,10 +2,17 @@
 
 <mat-icon (click)="displayLabel()" style="margin-top: 6px;" matTooltip="more">more_vert</mat-icon>
 
+
 <div  class = "menu" *ngIf="display" >
     <button mat-button *ngIf="newNote" (click)="deleteNote()">Delete Note</button>
     <button mat-button (click)="showLabels()">Add Label</button>
+    <div *ngIf="! alreadyCommented">
+    <button mat-button *ngIf="newNote" (click)="callQA()">Ask a Question</button>
+    </div>
+    <button mat-button *ngIf="alreadyCommented" (click)="callQA()">Show Question</button>
+
 </div>
+
 
 
     <div class = "menu" *ngIf="show" >
