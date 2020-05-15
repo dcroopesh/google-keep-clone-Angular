@@ -28,6 +28,21 @@ export class UserService {
     
   }
 
+  isloggedIn(){
+    return !! localStorage.getItem('token');
+  }
+
+  logout(){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseUserURL + 'logout/',{},httpOptions)
+
+  }
+
   forgotPassword(dataObject){
     
     return this.apiRequest.postRequest(environment.BaseUserURL + 'reset/',dataObject)
@@ -80,6 +95,19 @@ export class UserService {
 
     return this.apiRequest.postRequest(environment.BaseNotesURL + 'updateNotes/',dataObject,httpOptions)
     
+  }
+
+  getNotesDetail(noteId){
+    const httpOptions = {
+    
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.getRequest(environment.BaseNotesURL + 'getNotesDetail/' + noteId ,httpOptions)
+
+
   }
 
   deleteNotes(dataObject){
@@ -278,6 +306,57 @@ export class UserService {
     }
 
     return this.apiRequest.deleteRequest(environment.BaseNotesURL + '/' + noteId + '/removeCollaboratorsNotes/' + colabUserId,httpOptions)
+
+  }
+
+  addQuestionAndAnswer(dataObject){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.postRequest(environment.BaseQAURl + 'addQuestionAndAnswer/',dataObject,httpOptions)
+
+  }
+
+
+  replyQuestion(messageId,dataObject){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseQAURl + 'reply/' + messageId,dataObject,httpOptions)
+
+
+  }
+
+  rateComment(messageId,dataObject){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseQAURl + 'rate/' + messageId,dataObject,httpOptions)
+
+  }
+
+
+  likeComment(messageId,dataObject){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+    return this.apiRequest.postRequest(environment.BaseQAURl + 'like/' + messageId,dataObject,httpOptions)
 
   }
 
