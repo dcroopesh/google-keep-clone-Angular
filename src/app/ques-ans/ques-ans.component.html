@@ -1,0 +1,60 @@
+<div class="container" fxLayout="column" fxLayoutGap="20px" >
+
+<div fxLayout="row" fxLayoutAlign="space-between end">
+    <div>{{ note.title }}</div>
+    <button mat-button [routerLink]="['/home']" >close</button>
+</div>
+<mat-divider></mat-divider>
+<div>Ask a Question</div>
+
+<div *ngIf="display">
+<div [froalaEditor]='options' [formControl]="question"></div>
+
+<div fxFlexAlign="end"><button mat-button color=primary (click)="send()"  >Ask</button>
+</div>
+</div>
+<mat-divider></mat-divider>
+
+<div fxLayout="row" *ngIf="showComment" fxLayoutGap="6px">
+    <img class="image" [src]="profilePic"> 
+    <div fxLayout="column">
+    <div fxLayout="row" fxLayoutGap="6px">    
+        <div>{{ firstName }} &nbsp; {{ lastName }} &nbsp; {{ date1 + ','}} &nbsp; {{ time1 }}</div>
+
+    <mat-icon (click)="showReply()">reply</mat-icon>
+
+    <mat-icon *ngIf="! liked" (click)="like()">thumb_up_alt</mat-icon>
+    <mat-icon *ngIf="liked"color="primary" (click)="like()">thumb_up_alt</mat-icon>
+    
+    <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (click)="rating()" (leave)="hovered=0" [readonly]="readonly"></ngb-rating>
+    <p>{{selected}}</p>
+    </div>
+    <div [innerHTML]="commentMessage" class="comment"></div>
+
+    </div>
+</div>
+
+<div *ngIf="reply">
+
+<div [froalaEditor]='options' [formControl]="question"></div>
+<div ><button mat-button color=primary (click)="replyy()">Reply</button>
+</div>
+</div>
+<div fxLayout="row" *ngIf="showReplyComment" fxLayoutGap="6px" style="position: relative ;left: 100px;">
+    <img class="image" [src]="profilePic"> 
+    <div fxLayout="column">
+    <div fxLayout="row" fxLayoutGap="6px">    
+        <div>{{ firstName }} &nbsp; {{ lastName }} &nbsp; {{ date + ','}} &nbsp; {{ time }}</div>
+
+    <mat-icon >thumb_up_alt</mat-icon>
+    <ngb-rating  (hover)="hovered=$event"  (leave)="hovered=0" [readonly]="readonly"></ngb-rating>
+    </div>
+    <div [innerHTML]="replyMessage" class="comment"></div>
+
+    </div>
+</div>
+
+
+
+
+
