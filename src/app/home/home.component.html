@@ -13,12 +13,27 @@
     </mat-card>
 
         <mat-icon>shopping_cart</mat-icon>
-        <div>
-        <img src="../../assets/images/BlankImage.jpg" alt="dp" (click)="dispalySignOut()">
-        <div *ngIf="signOut" class="sign-out">
-            <button mat-button class="sign-out-btn">Sign Out</button>
+        
+        <img [src] = "profilePic"  alt="dp" (click)="dispalySignOut()">
+        <mat-card *ngIf="signOut" class="sign-out" >
+        <div fxLayout= row fxLayoutAlign = "start start" fxLayoutGap="10px">
+            <div class="image" (click)="uploadImageDialog()">
+                <img class="image"[src] = "profilePic" >
+                <input type="file" id="FileUpload" style="display: none" #imageInput (change)="sendFile(imageInput)">
+            </div>
+        <div fxLayout="column">    
+            <div fxLayout = "row" >
+                <div class="font">{{ firstName }}</div>&nbsp;&nbsp; 
+                <div class="font">{{ lastName }}</div>
+            </div>
+            <div class="font">{{ email }}</div>
+        </div> 
         </div>
-    </div>
+        <mat-divider></mat-divider>
+
+            <button mat-button class="sign-out-btn" (click)="logout()">Sign Out</button>
+    </mat-card>
+
     </mat-toolbar>
     
 </div>
