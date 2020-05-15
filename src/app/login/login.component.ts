@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("firstName",response.body['firstName'])
       localStorage.setItem("lastName",response.body['lastName'])
       localStorage.setItem("email",response.body['email'])
+      localStorage.setItem("userImage",response.body['imageUrl'])
 
       this.util.snackBar("Success","Login Successful",1000);
       this.router.navigate(['/home']);
