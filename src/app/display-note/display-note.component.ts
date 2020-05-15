@@ -5,6 +5,7 @@ import { CreateNoteComponent } from '../create-note/create-note.component';
 import { UpdateNotesComponent } from '../update-notes/update-notes.component';
 import { CollaboratorComponent } from '../Icons/collaborator/collaborator.component';
 import { CollabDialogComponent } from '../collab-dialog/collab-dialog.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,14 +19,17 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
   show = false;
   @Output() notifyNote = new EventEmitter();
   @Output() onUNArchive = new EventEmitter<string>();
+  
   newNote="True"
   noteId;
   remainderArray = [];
   displayDate = [];
+  comment = [];
+  commented = []
   collaborators = {};
   month = ['Jan','Feb','March','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']
 
-  constructor(private requests : UserService,public dialog: MatDialog) {}
+  constructor(private requests : UserService,public dialog: MatDialog, private route : Router) {}
 
   ngOnInit(): void {};
   
@@ -33,11 +37,21 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
     var n = this.notesObjects;
     this.collaborators = []
     this.displayDate = [];
+    this.comment = [];
       for(let i = 0; i < n.length;i++){
 
       //to send data to colab dialog  
       this.collaborators[n[i]['id']] = n[i]['collaborators'];
-
+      
+      if (n[i]['questionAndAnswerNotes'].length > 0){
+        this.commented[i] = true
+        this.comment[i] = n[i]['questionAndAnswerNotes'] 
+        console.log(this.comment[i][0]['message'])
+      }
+      else{
+        this.commented[i] = false
+        this.comment[i] = null;
+      }
       let dateUTC = n[i]['reminder'][0]
           if (dateUTC != undefined){
             let dateIST = new Date(dateUTC)    ;
@@ -56,12 +70,19 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
       this.displayDate[i] = '';
     }
     }
+
+    this.commented = this.commented.reverse();
+    this.comment = this.comment.reverse();
     this.displayDate = this.displayDate.reverse();
   }
 
 
   Show(){
     this.show = !this.show;
+  }
+
+  showQues(){
+    this.route.navigate(['/home/questionAnswer/' + this.noteId])
   }
 
   showDialog(item){
