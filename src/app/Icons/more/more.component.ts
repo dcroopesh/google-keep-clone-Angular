@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { DataService } from 'src/app/services/data.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class MoreComponent implements OnInit {
   display = false;
   show = false;
   @Input() noteId;
+  @Input() alreadyCommented;
   @Output() ondelete = new EventEmitter<string>() ;
   @Input() newNote;
 
@@ -22,7 +24,7 @@ export class MoreComponent implements OnInit {
 
   labels;
   labelArray = [];
-  constructor( private requests: UserService , private data : DataService) { 
+  constructor( private requests: UserService , private data : DataService,private router : Router) { 
     
     this.data.label.subscribe(next =>{
       this.labels = next;
@@ -65,7 +67,7 @@ export class MoreComponent implements OnInit {
   }
   showLabels(){
     this.show= !this.show;
-    
+
   }
 
   selectLabel(label,i){  
@@ -81,5 +83,9 @@ export class MoreComponent implements OnInit {
       }
     }
     this.onLabelSelect.emit(this.labelArray);
+  }
+
+  callQA(){
+    this.router.navigate(['/home/questionAnswer/'+this.noteId])
   }
 }
