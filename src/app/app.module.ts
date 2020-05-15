@@ -58,6 +58,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CollabDialogComponent } from './collab-dialog/collab-dialog.component';
+import { AuthGuard } from './auth.guard';
+import { ProfilePicComponent } from './profile-pic/profile-pic.component';
+
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { QuesAnsComponent } from './ques-ans/ques-ans.component';
+import { StarRatingModule } from 'angular-star-rating';
 
 @NgModule({
   declarations: [
@@ -88,6 +94,8 @@ import { CollabDialogComponent } from './collab-dialog/collab-dialog.component';
     LabelsComponent,
     LabelsSidenavComponent,
     CollabDialogComponent,
+    ProfilePicComponent,
+    QuesAnsComponent,
     
   ],
   imports: [
@@ -116,6 +124,9 @@ import { CollabDialogComponent } from './collab-dialog/collab-dialog.component';
     MatMenuModule,
     MatAutocompleteModule,
     NgbModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
+    StarRatingModule.forRoot()
 
     
     
@@ -126,7 +137,8 @@ import { CollabDialogComponent } from './collab-dialog/collab-dialog.component';
     UtilityService,
     UserService,
     DataService,
-    MatDatepickerModule
+    MatDatepickerModule,
+    AuthGuard
     
    
   ],
