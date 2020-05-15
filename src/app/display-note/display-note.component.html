@@ -9,7 +9,7 @@
             
         </div>
 
-        <div style="height:max-content">
+        <div>
             {{item.description}}
         </div>
 
@@ -47,10 +47,16 @@
                 <app-image class="icons"></app-image>
                 <app-archive *ngIf="! item.isArchived" class="icons" (onArchive)=archiveNotes()></app-archive>
                 <app-unarchive *ngIf="item.isArchived" (onUnArchive)=unarchive() [noteId]="noteId" class="icons"></app-unarchive>
-                <app-more class="icons" [newNote]="newNote" [noteId]="noteId" (ondelete)=send($event) (onLabelSelect)="addLabel($event)"></app-more>
+                <app-more class="icons" [newNote]="newNote" [noteId]="noteId"  (ondelete)=send($event) [alreadyCommented]="commented[i]" (onLabelSelect)="addLabel($event)"></app-more>
             </div>
         </div>
 
+
+    <div *ngIf="comment[i]" (click)="showQues()">
+        <mat-divider></mat-divider> 
+        <div class="question">Question Asked</div>
+        <div [innerHTML]="comment[i][0]['message']"></div>
+    </div>
     </mat-card>
 
 </div>
