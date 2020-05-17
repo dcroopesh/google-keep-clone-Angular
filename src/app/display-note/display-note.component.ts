@@ -6,6 +6,9 @@ import { UpdateNotesComponent } from '../update-notes/update-notes.component';
 import { CollaboratorComponent } from '../Icons/collaborator/collaborator.component';
 import { CollabDialogComponent } from '../collab-dialog/collab-dialog.component';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
+import { viewClassName } from '@angular/compiler';
+import { DisplayNotePipe } from './display-note.pipe'
 
 
 @Component({
@@ -26,18 +29,35 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
   displayDate = [];
   comment = [];
   commented = []
+  width = "30%"
+  listView;
   collaborators = {};
+  searchText
+
   month = ['Jan','Feb','March','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']
 
-  constructor(private requests : UserService,public dialog: MatDialog, private route : Router) {}
+  constructor(private requests : UserService,public dialog: MatDialog, private route : Router,
+    private data : DataService) { 
+      
+      this.changeView();
+    }
 
-  ngOnInit(): void {};
+  ngOnInit(): void {
+    //this.changeView();
+
+  };
   
   ngOnChanges()	{
+
+
     var n = this.notesObjects;
     this.collaborators = []
     this.displayDate = [];
     this.comment = [];
+
+    this.data.searchText.subscribe(next =>{
+      this.searchText = next;
+    })
       for(let i = 0; i < n.length;i++){
 
       //to send data to colab dialog  
@@ -46,7 +66,6 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
       if (n[i]['questionAndAnswerNotes'].length > 0){
         this.commented[i] = true
         this.comment[i] = n[i]['questionAndAnswerNotes'] 
-        console.log(this.comment[i][0]['message'])
       }
       else{
         this.commented[i] = false
@@ -77,6 +96,20 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
   }
 
 
+  changeView(){
+    this.data.gridOrList.subscribe(next =>{
+      this.listView = next;
+      if(this.listView == true){
+        console.log("chnage view")
+        this.width = "100%";
+      }else{
+        this.width = "30%";
+    
+      }
+  })
+}
+
+
   Show(){
     this.show = !this.show;
   }
@@ -90,7 +123,9 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
     
     const dialogRef = this.dialog.open(UpdateNotesComponent, {
       width: '450px',
-      data: {item:item}
+     
+      data: item,
+      panelClass: 'mat-no-padding-dialog',
       });
        
   }
@@ -157,20 +192,20 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
   })
   }
 
-  addLabel(labelArray){
-    console.log("add","")
-    let labelId = labelArray[0].id;
+    addLabel(labelArray){
+      console.log("add","")
+      let labelId = labelArray[0].id;
 
-    this.requests.add(labelId,this.noteId)
-    .subscribe((response) =>{
-      this.send();
+      this.requests.add(labelId,this.noteId)
+      .subscribe((response) =>{
+        this.send();
 
-    },
-    (error) => {
-      console.log(error)
+      },
+      (error) => {
+        console.log(error)
 
-    })
-  }
+      })
+    }
 
   removeLabel(label){
 
