@@ -4,8 +4,10 @@
     <div><mat-divider></mat-divider></div>
     
     <div fxLayout="row">
-        <div fxFlexOffset="60px">{{firstName}} {{lastName}} (Owner)</div>&nbsp;&nbsp;
-        <div>{{ email }}</div>
+        <img class="image" [src] = "profilePic">
+
+        <div fxFlexOffset="10px" fxFlexAlign="center">{{firstName}} {{lastName}} (Owner)</div>&nbsp;&nbsp;
+        <div fxFlexAlign="center">{{ email }}</div>
     </div>
     
     <div *ngIf="collaborators">
