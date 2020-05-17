@@ -1,0 +1,28 @@
+<mat-dialog-content>
+
+
+
+    <label class="custom-file-upload">
+        <input type="file" (change)="fileChangeEvent($event)"/>
+        Select an Image
+    </label>
+
+
+    <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="4 / 3"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+        (cropperReady)="cropperReady()"
+        (loadImageFailed)="loadImageFailed()">
+    </image-cropper>
+
+    <!-- <img [src]="croppedImage" /> -->
+
+    <button mat-button (click)=upload()>Upload</button>
+
+</mat-dialog-content>
+
+
