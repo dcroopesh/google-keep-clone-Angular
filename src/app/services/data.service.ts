@@ -8,13 +8,28 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 export class DataService {
 
   private labelObject = new BehaviorSubject([]);
+  private gridList = new BehaviorSubject([]);
+  private search = new BehaviorSubject([]);
+
+
   label = this.labelObject.asObservable();
+  gridOrList = this.gridList.asObservable();
+  searchText = this.search.asObservable();
 
   constructor() { }
 
   changeLabel(label) {
 
     this.labelObject.next(label)
+
+  }
+
+  changeView(listView){
+    this.gridList.next(listView)
+  }
+
+  searchNote(text){
+    this.search.next(text)
 
   }
 
