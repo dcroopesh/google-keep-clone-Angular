@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'registration' , component: RegistrationComponent },
   { path: 'login' , component: LoginComponent},
   { path: 'forgotpassword' , component: ForgotPasswordComponent},
+  { path: 'trail' , component: FlexDesignComponent},
 
   { path: 'resetpassword/:token' , component : ResetpasswordComponent},
   { path: 'home' , component: HomeComponent , canActivate : [AuthGuard],
