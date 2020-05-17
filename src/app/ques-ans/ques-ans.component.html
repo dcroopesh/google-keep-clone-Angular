@@ -1,7 +1,7 @@
 <div class="container" fxLayout="column" fxLayoutGap="20px" >
 
 <div fxLayout="row" fxLayoutAlign="space-between end">
-    <div>{{ note.title }}</div>
+    <div>{{ title }}</div>
     <button mat-button [routerLink]="['/home']" >close</button>
 </div>
 <mat-divider></mat-divider>
@@ -15,43 +15,36 @@
 </div>
 <mat-divider></mat-divider>
 
+<div *ngFor="let q of ques;index as i">
 <div fxLayout="row" *ngIf="showComment" fxLayoutGap="6px">
-    <img class="image" [src]="profilePic"> 
-    <div fxLayout="column">
-    <div fxLayout="row" fxLayoutGap="6px">    
-        <div>{{ firstName }} &nbsp; {{ lastName }} &nbsp; {{ date1 + ','}} &nbsp; {{ time1 }}</div>
-
-    <mat-icon (click)="showReply()">reply</mat-icon>
-
-    <mat-icon *ngIf="! liked" (click)="like()">thumb_up_alt</mat-icon>
-    <mat-icon *ngIf="liked"color="primary" (click)="like()">thumb_up_alt</mat-icon>
     
-    <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (click)="rating()" (leave)="hovered=0" [readonly]="readonly"></ngb-rating>
-    <p>{{selected}}</p>
-    </div>
-    <div [innerHTML]="commentMessage" class="comment"></div>
-
-    </div>
-</div>
-
-<div *ngIf="reply">
-
-<div [froalaEditor]='options' [formControl]="question"></div>
-<div ><button mat-button color=primary (click)="replyy()">Reply</button>
-</div>
-</div>
-<div fxLayout="row" *ngIf="showReplyComment" fxLayoutGap="6px" style="position: relative ;left: 100px;">
     <img class="image" [src]="profilePic"> 
     <div fxLayout="column">
     <div fxLayout="row" fxLayoutGap="6px">    
-        <div>{{ firstName }} &nbsp; {{ lastName }} &nbsp; {{ date + ','}} &nbsp; {{ time }}</div>
+        <div>{{ firstName }} &nbsp; {{ lastName }} &nbsp; {{ date[i] + ','}} &nbsp; {{ time[i] }}</div>
 
-    <mat-icon >thumb_up_alt</mat-icon>
-    <ngb-rating  (hover)="hovered=$event"  (leave)="hovered=0" [readonly]="readonly"></ngb-rating>
+    <mat-icon (click)="showReply(i)">reply</mat-icon>
+
+    <mat-icon *ngIf="! liked[i]" (click)="like(i)">thumb_up_alt</mat-icon>
+    <mat-icon *ngIf="liked[i]"color="primary" (click)="like(i)">thumb_up_alt</mat-icon>
+    
+    <ngb-rating [(rate)]="selected[i]" (hover)="hovered=$event" (click)="rating(i)" (leave)="hovered=0" [readonly]="readonly"></ngb-rating>
+    <p>{{selected[i]}}</p>
     </div>
-    <div [innerHTML]="replyMessage" class="comment"></div>
+    <div [innerHTML]="commentMessage[i]" class="comment"></div>
 
     </div>
+
+
+</div>
+
+<div *ngIf="reply[i]">
+
+<div [froalaEditor]='options' [(froalaModel)]="replyMessage"></div>
+<div ><button mat-button color=primary (click)="replyy(i)">Reply</button>
+</div>
+</div>
+
 </div>
 
 
