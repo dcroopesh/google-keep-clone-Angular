@@ -64,6 +64,8 @@ import { ProfilePicComponent } from './profile-pic/profile-pic.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { QuesAnsComponent } from './ques-ans/ques-ans.component';
 import { StarRatingModule } from 'angular-star-rating';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { DisplayNotePipe } from './display-note/display-note.pipe';
 
 @NgModule({
   declarations: [
@@ -96,6 +98,7 @@ import { StarRatingModule } from 'angular-star-rating';
     CollabDialogComponent,
     ProfilePicComponent,
     QuesAnsComponent,
+    DisplayNotePipe,
     
   ],
   imports: [
@@ -126,7 +129,8 @@ import { StarRatingModule } from 'angular-star-rating';
     NgbModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    ImageCropperModule
 
     
     
