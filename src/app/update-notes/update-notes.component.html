@@ -1,21 +1,44 @@
 
 
-<mat-dialog-content fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="3%">
-    <div contenteditable="true" id="title" class="title" data-text="Title">{{ title  }}</div>
+<mat-dialog-content fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="3%" [style.background]="item.color">
+    <div contenteditable="true" id="titlee" class="titlee" data-text="Title" >{{ item.title  }}</div>
    
-    <div contenteditable="true" id="description" class="title" data-text="Take a note...">{{ description }}</div>
+    <div contenteditable="true" id="description" class="title" data-text="Take a note...">{{ item.description }}</div>
 
-    <div style="width:100%; position:relative ; top:0px"> </div>
+    <mat-chip-list fxFlexAlign="start" >
+        <div *ngFor="let label of item.noteLabels">
+            <mat-chip class="background" [style.background-color]="item.color">{{ label.label }}
+            <mat-icon matChipRemove (click)="removeLabel(label)">cancel</mat-icon></mat-chip>
+
+        </div>
+    </mat-chip-list>
     
+    <mat-chip-list fxFlexAlign="start" *ngIf="displayDate" >
+            
+        <mat-chip class="background" [style.background-color]="item.color"><mat-icon>schedule</mat-icon>&nbsp;
+            <div style="font-size: 12px;"> {{ displayDate }} </div>
+            &nbsp;<mat-icon matChipRemove (click)=removeReminderNotes()>cancel</mat-icon></mat-chip>
+    
+    </mat-chip-list>
+
+    <div *ngIf="collaborators" >
+        <div *ngFor="let user of item.collaborators"  fxLayout="row" fxLayoutAlign="space-between center">         
+      
+        <button mat-mini-fab [style.background-color]="item.color"  style="outline: none;border:0;">
+            <div class="user-colab">{{ user.firstName[0] | uppercase}} </div>
+        </button>
+        </div>
+    </div>
+
     <div style="width:100%">        
         <div fxLayout="row"  fxLayoutAlign="space-between center" style="width:100%">  
-        <app-reminder ></app-reminder>
-        <app-collaborator ></app-collaborator>
-        <app-color ></app-color>
+        <app-reminder (OnDateSelect)="addUpdateReminderNotes($event)"></app-reminder>
+        <app-collaborator (click)="showColabDialog()"></app-collaborator>
+        <app-color (color)="updateColor($event)"></app-color>
         <app-image ></app-image>
-        <app-archive ></app-archive>
-        <!-- <app-unarchive ></app-unarchive> -->
-        <app-more></app-more>
+        <app-archive (onArchive)=archiveNotes()></app-archive>
+        <app-more (onLabelSelect)="addLabel($event)" (ondelete)=deleteNote($event)></app-more>
+        <app-close (click)="send()"></app-close>
         </div>
     </div>
 </mat-dialog-content>
