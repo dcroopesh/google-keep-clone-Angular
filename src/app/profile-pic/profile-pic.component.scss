@@ -1,0 +1,33 @@
+div{
+    margin: 1px auto;
+    width: 380px;
+    height: 300px;
+    border: 1px solid black;
+}
+img{
+    width: 330px;
+    height: 360px;
+    border: 1px solid black;
+    margin-left: 10px;
+    
+}
+
+button{
+    margin-left: 10px;
+    outline: none;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+
+
