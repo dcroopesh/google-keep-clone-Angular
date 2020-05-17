@@ -88,7 +88,7 @@ export class UserService {
   updateNotes(dataObject){
     const httpOptions = {
     
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
       'Authorization': localStorage.getItem("token"),
       
     }
@@ -357,6 +357,20 @@ export class UserService {
       
     }
     return this.apiRequest.postRequest(environment.BaseQAURl + 'like/' + messageId,dataObject,httpOptions)
+
+  }
+
+  uploadProfileImage(data){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.postRequest(environment.BaseUserURL + 'uploadProfileImage',data,httpOptions)
+
 
   }
 
