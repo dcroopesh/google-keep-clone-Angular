@@ -1,6 +1,6 @@
 <div class="">
 
-    <mat-toolbar class="colour" fxLayout="row" fxLayout.lt-md="row" fxLayoutGap.lt-md="2%"fxLayoutGap="3%" fxLayout="space-between center" >
+    <mat-toolbar class="colour" fxLayout="row" fxLayout.lt-md="row" fxLayoutGap.lt-md="2%"fxLayoutGap="2%" fxLayout="space-between center" >
         <button mat-icon-button (click)="sidenav.toggle()" >
         <mat-icon>menu</mat-icon></button>
         
@@ -9,18 +9,21 @@
               
     <mat-card class="search-bar" fxLayout="row" fxLayout.lt-md="row"fxLayoutGap="3%"  fxLayoutAlign="start center">
         <mat-icon >search</mat-icon>
-        <input type="text" placeholder="Search..">
+        <input type="text" class="input" placeholder="Search.." [formControl]="searchText" (keyup)=sendData()>
     </mat-card>
 
         <mat-icon>shopping_cart</mat-icon>
         
+        <div class="view">
+            <div class="grid" *ngIf="! grid" (click)="showGridOrList()"></div>
+            <div class="list" *ngIf="grid" (click)="showGridOrList()"></div>
+        </div>
+
         <img [src] = "profilePic"  alt="dp" (click)="dispalySignOut()">
+        
         <mat-card *ngIf="signOut" class="sign-out" >
         <div fxLayout= row fxLayoutAlign = "start start" fxLayoutGap="10px">
-            <div class="image" (click)="uploadImageDialog()">
-                <img class="image"[src] = "profilePic" >
-                <input type="file" id="FileUpload" style="display: none" #imageInput (change)="sendFile(imageInput)">
-            </div>
+                <img class="image"[src] = "profilePic" (click)="uploadImageDialog()">
         <div fxLayout="column">    
             <div fxLayout = "row" >
                 <div class="font">{{ firstName }}</div>&nbsp;&nbsp; 
