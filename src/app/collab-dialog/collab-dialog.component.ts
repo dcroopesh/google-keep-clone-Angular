@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { environment } from '../../environments/environment'
+
 
 @Component({
   selector: 'app-collab-dialog',
@@ -18,6 +20,7 @@ export class CollabDialogComponent implements OnInit {
   usersDetails;
   showCollaboratorr = true;
   noteId;
+  profilePic
   constructor(private requests : UserService,@Inject(MAT_DIALOG_DATA) public data: any ) {
 
     this.firstName = localStorage.getItem('firstName');
@@ -25,6 +28,8 @@ export class CollabDialogComponent implements OnInit {
     this.email = localStorage.getItem('email');
     this.noteId = this.data.item;
     this.collaborators = this.data.collab;
+    this.profilePic = environment.BaseURl + localStorage.getItem('userImage');
+
     console.log(this.collaborators)
    }
 
