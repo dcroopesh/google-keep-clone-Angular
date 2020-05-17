@@ -18,28 +18,32 @@ export class QuesAnsComponent implements OnInit {
 
   noteId;
   note;
-  question = new FormControl();
+  question = new FormControl("");
+  public replyMessage = "asdasd";
 
   firstName
   lastName
   email
   display = true
   datee
-  date
-  date1
-  time1
-  time
+
+  date = []
+  time = []
+
   showComment = false
-  selected = 0;
+  selected = [];
+  
   hovered = 0;
   readonly = false;
-  reply = false
+  reply = []
   profilePic
   showReplyComment = false
-  commentMessage
-  replyMessage
-  messageId
-  liked = false
+  commentMessage = []
+  // replyMessage
+  messageId = []
+  ques = []
+  liked = []
+  title
 
   constructor(private route : ActivatedRoute , private requests : UserService,config: NgbRatingConfig) {
     config.max = 5;
@@ -51,51 +55,55 @@ export class QuesAnsComponent implements OnInit {
     this.email = localStorage.getItem('email');
     this.profilePic = environment.BaseURl + localStorage.getItem('userImage');
 
-
-    this.getNoteData();
+    // this.selected.fill(0)
+    
 
    }
 
   ngOnInit(): void {
     
-    
+    this.getNoteData();
+
     
   }
 
   getNoteData(){
-    
+
     this.requests.getNotesDetail(this.noteId)
     .subscribe((response)=>{
       this.note = response['data']['data'][0];
-      let ques = this.note['questionAndAnswerNotes']
-      console.log(ques)
+      this.title = this.note.title
+      this.ques = this.note['questionAndAnswerNotes']
 
-      if (ques.length > 0){
-
+      if (this.ques.length > 0){
+        console.log(this.ques.length)
         this.display = false
-        this.commentMessage = ques[0]['message']
-        
-        // console.log(this.comment)  
         this.showComment = true
 
-        let dateString = ques[0]['createdDate'];
+        for(let i=0;i<this.ques.length;i++){
+        
+        this.commentMessage[i] = this.ques[i]['message']
+        this.reply[i] = false
+
+        let dateString = this.ques[i]['createdDate'];
         let date = new Date(dateString)
     
-        this.date1 = date.toString().slice(4,16)
-        this.time1 = this.formatAMPM(date) 
+        this.date[i] = date.toString().slice(4,16)
+        this.time[i] = this.formatAMPM(date) 
 
-        this.messageId = ques[0]['id']
+        this.messageId[i] = this.ques[i]['id']
 
-        if (ques[0]['rate'].length > 0 ){
-          console.log(ques[0]['rate'][0]['rate'])
-          this.selected = ques[0]['rate'][0]['rate']
+        if (this.ques[i]['rate'].length > 0 ){
+          this.selected[i] = this.ques[i]['rate'][0]['rate']
+        }else{
+          this.selected[i] = 0
         }
 
-        if (ques[0]['like'].length > 0 ){
-          console.log(ques[0]['like'][0]['like'])
-          this.liked = ques[0]['like'][0]['like']
+        if (this.ques[i]['like'].length > 0 ){
+          this.liked[i] = this.ques[i]['like'][0]['like']
         }
       }
+    }
         
       
     },(error) =>{
@@ -138,11 +146,11 @@ export class QuesAnsComponent implements OnInit {
     console.log(response)
     let dateString = response.body['data']['details']['createdDate'];
     let date = new Date(dateString)
-    let message = response['data']['details']
-
+    let message = response.body['data']['details']
+    
     this.messageId = message['id']
-    this.date1 = date.toString().slice(4,16)
-    this.time1 = this.formatAMPM(date) 
+    // this.date1 = date.toString().slice(4,16)
+    // this.time1 = this.formatAMPM(date) 
 
     this.display = ! this.display
     this.showComment = ! this.showComment
@@ -154,64 +162,63 @@ export class QuesAnsComponent implements OnInit {
 
 }
 
-showReply(){
-  // this.question.setValue('')
+showReply(i){
+  //this.question.setValue('')
 
-  this.reply = ! this.reply
-}
+  this.reply[i] = ! this.reply[i]
+} 
 
-replyy(){
+replyy(i){
 
-  console.log(this.question.value)
+  console.log(this.replyMessage)
 
-  this.replyMessage  = this.question.value
+  // this.replyMessage  = this.question.value
   let dataObject = {
 
-    message : this.question.value
+    message : this.replyMessage
 
   }
 
-  this.requests.replyQuestion(this.messageId,dataObject)
+  this.requests.replyQuestion(this.messageId[i],dataObject)
   .subscribe((response)=>{
-    let dateString = response.body['data']['details']['createdDate'];
-    let date = new Date(dateString)
+    // let dateString = response.body['data']['details']['createdDate'];
+    // let date = new Date(dateString)
     
-    this.reply = false
-    this.showReplyComment = true
-    this.date = date.toString().slice(4,16)
-    this.time = this.formatAMPM(date)
+    // this.reply = false
+    // this.showReplyComment = true
+    // this.date = date.toString().slice(4,16)
+    // this.time = this.formatAMPM(date)
     
-   
+    this.getNoteData()
 
   },(error)=>{
 
   })
 }
 
-rating(){
+rating(i){
 
-  console.log("rr",this.selected)
 
   let dataObject = {
-    rate : this.selected
+    rate : this.selected[i]
   }
 
-  this.requests.rateComment(this.messageId,dataObject)
+  this.requests.rateComment(this.messageId[i],dataObject)
   .subscribe((response)=>{
 
-  },(errro)=>{
+  },(error)=>{
 
   })
 }
 
-like(){
-  this.liked = ! this.liked
+like(i){
+  this.liked[i] = ! this.liked[i]
 
   let dataObject = {
-    like : this.liked
+    like : this.liked[i]
   }
 
-  this.requests.likeComment(this.messageId,dataObject)
+  this.requests.likeComment(this.messageId[i],dataObject)
   .subscribe((response)=>{
 
   },(error)=>{
