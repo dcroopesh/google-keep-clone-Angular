@@ -128,6 +128,11 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
       panelClass: 'mat-no-padding-dialog',
       });
        
+
+    dialogRef.afterClosed().subscribe(res => {
+      this.send() 
+      })
+
   }
 
   getItem(item){
@@ -246,5 +251,6 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
       });
 
   }
+
   
 }
