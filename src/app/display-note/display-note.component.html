@@ -1,7 +1,7 @@
 <div class="container" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="3%">
     
     
-    <mat-card class="mat-card" [ngStyle]="{'width': width}"*ngFor="let item of notesObjects.reverse();index as i" [style.background-color]="item.color"   fxLayout="column" fxLayoutAlign="space-between start"
+    <mat-card class="mat-card" [ngStyle]="{'width': width}"*ngFor="let item of notesObjects.reverse() | displayNote : searchText ; let i = index" [style.background-color]="item.color"   fxLayout="column" fxLayoutAlign="space-between start"
     fxFlex.lt-md = "1 1 97%" fxFlexOffset.lt-md="5%" (mouseover)=getItem(item) fxLayoutGap="2%">
     
 
