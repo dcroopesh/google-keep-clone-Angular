@@ -66,6 +66,8 @@ import { QuesAnsComponent } from './ques-ans/ques-ans.component';
 import { StarRatingModule } from 'angular-star-rating';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { DisplayNotePipe } from './display-note/display-note.pipe';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { ServiceComponent } from './service/service.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +101,7 @@ import { DisplayNotePipe } from './display-note/display-note.pipe';
     ProfilePicComponent,
     QuesAnsComponent,
     DisplayNotePipe,
+    ServiceComponent,
     
   ],
   imports: [
@@ -130,7 +133,8 @@ import { DisplayNotePipe } from './display-note/display-note.pipe';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     StarRatingModule.forRoot(),
-    ImageCropperModule
+    ImageCropperModule,
+    // Ng4LoadingSpinnerModule.forRoot()
 
     
     
