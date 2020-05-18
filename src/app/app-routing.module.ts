@@ -17,12 +17,14 @@ import { ArchiveSidenavComponent } from './archive-sidenav/archive-sidenav.compo
 import { LabelsSidenavComponent } from './labels-sidenav/labels-sidenav.component';
 import { AuthGuard } from './auth.guard';
 import { QuesAnsComponent } from './ques-ans/ques-ans.component';
+import { ServiceComponent } from './service/service.component';
 
 
 const routes: Routes = [
 
-  { path: '',redirectTo: '/registration',pathMatch:"full"},   
-  { path: 'registration' , component: RegistrationComponent },
+  { path: '',redirectTo: '/card',pathMatch:"full"},
+  { path: 'card' , component: ServiceComponent },
+  { path: 'signup' , component: RegistrationComponent },
   { path: 'login' , component: LoginComponent},
   { path: 'forgotpassword' , component: ForgotPasswordComponent},
   { path: 'trail' , component: FlexDesignComponent},
