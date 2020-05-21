@@ -1,14 +1,16 @@
 <mat-card class="container" fxLayout="column" fxLayoutAlign="space-between start" fxLayoutGap="3%" fxFlex.lt-md="100" >
 
-    <mat-card-title class="font" >
-        <span style="color:'#4285f4';">F</span>
-        <span style="color:'#EA4335';">u</span>
-        <span style="color:'#fbbC05';">n</span>
-        <span style="color:'#4285f4';">d</span>
-        <span style="color:'#34A853';">o</span>
-        <span style="color:'#EA4335';">o</span>
-    </mat-card-title>
-
+    <div fxLayout="row" fxLayoutAlign="space-between" style="width: 100%;">
+        <mat-card-title class="font" >
+            <span style="color:'#4285f4';">F</span>
+            <span style="color:'#EA4335';">u</span>
+            <span style="color:'#fbbC05';">n</span>
+            <span style="color:'#4285f4';">d</span>
+            <span style="color:'#34A853';">o</span>
+            <span style="color:'#EA4335';">o</span>
+        </mat-card-title>
+        <button class="cart" routerLink="/card" >Go to Cart</button>
+    </div>
     <mat-card-title class="font" fxFlexAlign="start">Create your Fundoo Account</mat-card-title>
 
     <div class="email" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="1%" fxLayout.lt-md="column" fxLAyoutAlign.lt-md="start center">
@@ -61,11 +63,20 @@
         </mat-form-field>
     </div>
 
-  <div style="width: 100%;" fxLayout="row"  fxLayoutAlign="start center" fxLayoutGap="8%">
-     
-    <a routerLink='/login' fxFlexOffset="2%">Already have account </a>  
+    <div *ngIf="cartId != ''" >
 
-    <button mat-raised-button (click)="submit()">Submit</button>
+        <app-service-cards style="padding: 80px;"></app-service-cards>
 
-</div>
+    </div>
+    <div  style="width: 100%;">
+        <div style="width: 100%;" fxLayout="row"  fxLayoutAlign="start center" fxLayoutGap="10%">
+        
+            <a routerLink='/login' fxFlexOffset="2%">Already have account </a>  
+
+            <button mat-raised-button (click)="submit()" >Submit</button>
+
+        </div>
+    </div>
+
+    
 </mat-card>
