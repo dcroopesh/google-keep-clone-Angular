@@ -1,0 +1,20 @@
+<mat-dialog-content>
+    <mat-toolbar>
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+            <p>Advance Pack Details</p>
+            <p>${{ price }}/month</p>
+        </div>
+    </mat-toolbar>
+    
+    <div class="container">
+        <mat-tab-group>
+            <mat-tab label="Feature1"> Content 1 </mat-tab>
+            <mat-tab label="Feature2"> Content 2 </mat-tab>
+            <mat-tab label="Feature3"> Content 3 </mat-tab>
+        </mat-tab-group>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <button class="button" (click)="close()" >Remove</button>
+            <button class="button" (click)="navigate()" >Proceed to Checkout</button>
+        </div>
+    </div>
+</mat-dialog-content>
