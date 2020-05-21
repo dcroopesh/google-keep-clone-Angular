@@ -68,7 +68,12 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { DisplayNotePipe } from './display-note/display-note.pipe';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { ServiceComponent } from './service/service.component';
-
+import {MatRippleModule} from '@angular/material/core';
+import { ServiceCardsComponent } from './service-cards/service-cards.component';
+import { ServiceCardDialogComponent } from './service-card-dialog/service-card-dialog.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,6 +107,9 @@ import { ServiceComponent } from './service/service.component';
     QuesAnsComponent,
     DisplayNotePipe,
     ServiceComponent,
+    ServiceCardsComponent,
+    ServiceCardDialogComponent,
+    ShoppingCartComponent,
     
   ],
   imports: [
@@ -134,7 +142,10 @@ import { ServiceComponent } from './service/service.component';
     FroalaViewModule.forRoot(),
     StarRatingModule.forRoot(),
     ImageCropperModule,
-    // Ng4LoadingSpinnerModule.forRoot()
+    // Ng4LoadingSpinnerModule.forRoot(),
+    MatRippleModule,
+    MatTabsModule,
+    MatProgressBarModule
 
     
     
