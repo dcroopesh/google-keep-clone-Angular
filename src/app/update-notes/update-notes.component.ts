@@ -11,11 +11,12 @@ import { CollabDialogComponent } from '../collab-dialog/collab-dialog.component'
 })
 export class UpdateNotesComponent implements OnInit {
 
-  
+  @Output() notifyNote = new EventEmitter();
   item
   displayDate = ''
   collaborators = []
   noteLabels = []
+  newNote = true
   month = ['Jan','Feb','March','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']
 
 
@@ -31,8 +32,6 @@ export class UpdateNotesComponent implements OnInit {
     this.collaborators[this.item.id] = this.item['collaborators'];
     this.noteLabels = this.item.noteLabels
     let dateUTC = this.item['reminder'][0]
-    console.log(this.noteLabels)
-    console.log(this.item)
     if (dateUTC != undefined){
       
       let dateIST = new Date(dateUTC)    ;
@@ -51,7 +50,7 @@ export class UpdateNotesComponent implements OnInit {
 }
 
   send(){
-    // this.closeDialog()
+    
     let dataObject = {
 
       noteId  : this.item.id,
@@ -60,7 +59,8 @@ export class UpdateNotesComponent implements OnInit {
     }
     this.requests.updateNotes(dataObject)
     .subscribe((response) =>{
-      console.log(response)
+      this.closeDialog()
+      // console.log(response)
     },
     (error) =>{
       console.log(error)
@@ -139,8 +139,13 @@ export class UpdateNotesComponent implements OnInit {
   
     }
 
+    
+  
+    
+
 
     closeDialog() {
+      
       this.dialogRef.close();
     }
 
@@ -202,13 +207,7 @@ export class UpdateNotesComponent implements OnInit {
   
     }
 
-
-    
-  
-
-  
-
-
-
-
+    deleteNote(){
+      this.closeDialog()
+    }
 }
