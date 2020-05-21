@@ -12,7 +12,7 @@
         <input type="text" class="input" placeholder="Search.." [formControl]="searchText" (keyup)=sendData()>
     </mat-card>
 
-        <mat-icon>shopping_cart</mat-icon>
+        <mat-icon routerLink="/home/shoppingCart" style="outline: none;">shopping_cart</mat-icon>
         
         <div class="view">
             <div class="grid" *ngIf="! grid" (click)="showGridOrList()"></div>
