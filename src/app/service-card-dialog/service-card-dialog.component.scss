@@ -1,0 +1,39 @@
+mat-dialog-content{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+mat-toolbar{
+    background-color : #FFC226;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+}
+
+mat-toolbar > div{
+    width: 100%;
+    padding: 15px;
+}
+
+mat-tab-group{
+    width: 100%;
+    
+}
+
+.button{
+    
+    background-color: #0e89c2;
+    outline: none;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+.container{
+    padding: 15px;
+}
+
+p{
+    color: white;
+    font-size: 15px;
+}
