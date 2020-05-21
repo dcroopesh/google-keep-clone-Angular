@@ -18,6 +18,7 @@ import { LabelsSidenavComponent } from './labels-sidenav/labels-sidenav.componen
 import { AuthGuard } from './auth.guard';
 import { QuesAnsComponent } from './ques-ans/ques-ans.component';
 import { ServiceComponent } from './service/service.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
@@ -35,7 +36,9 @@ const routes: Routes = [
                 {path : 'remainder' , component : RemaindersComponent},
                 { path: 'archive' , component: ArchiveSidenavComponent},
                 { path: 'label/:labelname' , component: LabelsSidenavComponent},
-                { path: 'questionAnswer/:noteId' , component: QuesAnsComponent} ]
+                { path: 'questionAnswer/:noteId' , component: QuesAnsComponent},
+                { path: 'shoppingCart' , component: ShoppingCartComponent} ]
+              
               
  },
   { path: '**' , component: PageNotFoundComponent},
