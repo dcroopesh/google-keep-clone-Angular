@@ -3,7 +3,7 @@
 <mat-dialog-content fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="3%" [style.background]="item.color">
     <div contenteditable="true" id="titlee" class="titlee" data-text="Title" >{{ item.title  }}</div>
    
-    <div contenteditable="true" id="description" class="title" data-text="Take a note...">{{ item.description }}</div>
+    <div contenteditable="true" id="description" class="titlee" data-text="Take a note...">{{ item.description }}</div>
 
     <mat-chip-list fxFlexAlign="start" >
         <div *ngFor="let label of item.noteLabels">
@@ -37,7 +37,7 @@
         <app-color (color)="updateColor($event)"></app-color>
         <app-image ></app-image>
         <app-archive (onArchive)=archiveNotes()></app-archive>
-        <app-more (onLabelSelect)="addLabel($event)" (ondelete)=deleteNote($event)></app-more>
+        <app-more [newNote]="newNote" (onLabelSelect)="addLabel($event)" [noteId]="item.id" (ondelete)=deleteNote()></app-more>
         <app-close (click)="send()"></app-close>
         </div>
     </div>
