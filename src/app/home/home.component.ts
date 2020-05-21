@@ -45,6 +45,8 @@ export class HomeComponent implements OnInit {
 }
 
   ngOnInit(): void {
+
+   
   }
 
   dispalySignOut(){
@@ -52,7 +54,7 @@ export class HomeComponent implements OnInit {
   }
 
   sendData(){
-    this.data.searchNote(this.searchText)
+    this.data.searchNote(this.searchText.value)
   }
 
  showNotes(){
@@ -60,7 +62,7 @@ export class HomeComponent implements OnInit {
  }
  showRemainders(){
   this.route.navigate(['/home/remainder'])
-
+  
  }
  showArchive(){
   this.route.navigate(['/home/archive'])
@@ -90,7 +92,6 @@ showDialog(){
   uploadImageDialog(){
     
       // document.getElementById("FileUpload").click();
-      console.log("asd")
       const dialogRef = this.dialog.open(ProfilePicComponent, {width: '400px',height :"450px"})
       
     
