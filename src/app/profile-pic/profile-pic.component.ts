@@ -45,24 +45,19 @@ loadImageFailed() {
 
 upload(){
 
-  // var blob = new Blob([this.croppedImage], {type: 'image/png'});
-  var file = new File([this.dataURItoBlob(this.croppedImage)], 'filename.png');
-  // const formData: FormData = new FormData();
+  var blob = new Blob([this.croppedImage], {type: 'image/png'});
+  const formData: FormData = new FormData();
  
-  console.log(file)
-  let data ={
-
-    file : file
-  }
-  this.requests.uploadProfileImage(file)
+  formData.append('file',blob,'image.png'),
+  
+  this.requests.uploadProfileImage(formData)
   .subscribe((response)=>{
 
   },(error)=>{
 
   })
-
-
 }
+
 dataURItoBlob(dataURI): Blob {
   const byteString = atob(dataURI.split(',')[1]);
   const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
