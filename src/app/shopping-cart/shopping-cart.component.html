@@ -1,0 +1,63 @@
+<div class="container" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="30px">
+
+    <div class="row1" fxFlexOffset="30px" fxLayout="row" fxLayoutAlign="space-evenly center">
+            
+        <p class="app-name">FundooNotes</p>
+        <mat-progress-bar mode="determinate" [value]="progressBarValue" color="primary"></mat-progress-bar>
+    
+    </div>
+
+    <div class="cart">
+        Shopping Cart
+
+    </div>
+    <mat-divider style="width: 100%;"></mat-divider>
+
+    <div class="row2" fxLayout="row" fxLayoutAlign="space-evenly center">
+
+        <div class="row2-col1">{{"$" + productDetails.price + " per month"}} {{productDetails.name}}</div>
+
+        <div class="row2-col2">
+            <div class="blue">{{ productDetails.name + " Pack Details"}}</div>
+            <ul style="padding-left: 20px;">
+                <li >
+                    {{ productDetails.description }}
+                </li>
+            </ul>
+        </div>
+
+        <div  *ngIf="! showCheckout"class="row2-col3" fxFlexAlign="start">
+                <div>price</div>
+                <div class="blue">{{ "$" + productDetails.price}}</div>
+        </div>
+ 
+        <div *ngIf="! showCheckout" class="row2-col4" fxFlexAlign="start">
+            <div>validity</div>
+            <div class="blue">per month</div>
+        </div>
+
+        <div *ngIf="showCheckout" class="row2-col4" fxFlexAlign="start">
+            <div class="blue">{{ "$" + productDetails.price}}</div>
+            <div >per month</div>
+        </div>
+
+        <div *ngIf="! orderCompleted" class="row2-col5" fxLayout="column" fxLayoutAlign="center center">
+            
+            <p *ngIf="showCheckout" class="checkout" (click)="placeOrder()">Place your Order</p>
+            <div style="font-size:13px;">Subtotal(1 item) : ${{ productDetails.price }}</div>
+            <p *ngIf="! showCheckout" class="checkout" (click)="checkout()">Proceed to Checkout</p>
+        </div>
+    </div>
+
+    <mat-divider style="width: 100%;"></mat-divider>
+ 
+    <div *ngIf="! showCheckout"class="blue" style="font-size: 20px;">Subtotal(1 item) : ${{ productDetails.price }}</div>
+
+    <div *ngIf="showCheckout" class="row3" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25%">
+            <textarea *ngIf="! orderCompleted" [formControl]="address"></textarea>
+            <div *ngIf="! orderCompleted" fxFlexAlign="start">
+                <div>payment method</div>
+                <div class="blue" style="font-size: 22px;">Cash on Delivery</div>
+            </div>
+    </div>
+</div>
