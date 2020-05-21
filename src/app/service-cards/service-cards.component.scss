@@ -1,0 +1,74 @@
+.one{
+    width : 200px;
+    height: 200px; 
+    position: absolute;
+    z-index: 2;
+
+}
+
+.two{
+    width : 200px;
+    height: 200px; 
+    position: absolute;
+    right : -25px;
+    top : 30px;
+    z-index: 1;
+    background-color: rgb(228, 225, 225)
+}
+
+
+.box1:hover{
+
+    height: 205px;
+    .two{
+        background-color : #FFC226;
+    }
+}
+
+
+
+
+
+li{
+    word-break: break-all;
+}
+
+.heading{
+    font-weight: 500;
+    font-size: .65rem;
+}
+
+.blue{
+    color: blue;
+}
+
+.box1{
+    width : 200px;
+    height: 200px; 
+    position: relative;
+}
+
+mat-card{
+    border: 1px solid rgba($color: #000000, $alpha: .2);
+}
+
+.container{
+    height: 60%;
+}
+
+.gray-bg,.box1:hover{
+    background-color: rgb(228, 225, 225);
+}
+
+.yellow-bg{
+    background-color : #FFC226;
+
+}
+
+@media only screen and (max-width : 600px){
+
+    .container{
+        height: 550px;
+    }
+
+}
