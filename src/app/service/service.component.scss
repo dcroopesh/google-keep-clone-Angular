@@ -1,22 +1,28 @@
+.mat-toolbar{
+    background-color : #FFC226;
+
+}
+
 .title{
     width: inherit;
     font-size: 1.5rem;
 }
 
-mat-card{
-    width : 200px;
-    height: 200px; 
-}
 
-li{
-    word-break: break-all;
-}
 
-.heading{
+
+
+
+
+.text{
+
+    margin-top: 50px;
     font-weight: 500;
-    font-size: .65rem;
+    font-size: .9rem;
+
 }
 
-.blue{
+a {
+    text-decoration: none !important;
     color: blue;
 }
