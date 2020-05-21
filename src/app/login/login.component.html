@@ -1,4 +1,5 @@
-<mat-card class="container" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="3%" >
+<div fxLayout="row" fxLayoutAlign="centercenter">
+         <mat-card class="container" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="3%" >
 
     <mat-card-title class="font" >
         <span style="color:'#4285f4';">F</span>
@@ -28,15 +29,22 @@
             <mat-icon>{{hide? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
     </mat-form-field>
+
     
-
-
     <div fxLayout="row" class="password"fxLayoutAlign="space-around center" fxFlex="stretch">
         
         <div fxLayout="column" flexLayoutAlign="start start">
-        <a routerLink='/forgotpassword'>Forgot Password</a>
-        <a routerLink='/signup'>Create Account</a>
-    </div>  
+            <a routerLink='/forgotpassword'>Forgot Password</a>
+            <a routerLink='/signup'>Create Account</a>
+        </div>  
         <button mat-raised-button fxFlexAlign="center" (click)=submit()>Login</button>
     
     </div>
+    </mat-card>
+
+    <div *ngIf="cartId != ''" >
+
+        <app-service-cards style="padding: 80px;" ></app-service-cards>
+
+    </div>
+</div>
