@@ -1,8 +1,9 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
-import { Router } from "@angular/router";
+import { Router, Data } from "@angular/router";
 import { UserService } from '../services/user.service';
 import { UtilityService } from '../services/utility.service';
+import { DataService } from '../services/data.service';
 
 
 @Component({
@@ -13,12 +14,21 @@ import { UtilityService } from '../services/utility.service';
 export class RegistrationComponent {
 
   hide = true;
+  cartId 
+  dataa
+  constructor(private router: Router , private requests : UserService,private util : UtilityService,
+    private data : DataService
+    ) {}
 
-  constructor(private router: Router , private requests : UserService,private util : UtilityService) {
-    
-  }
 
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.data.getcartId.subscribe(next => 
+      {
+      this.cartId = next 
+      console.log(this.cartId)
+      })
+    }
 
   
   firstname = new FormControl('',[Validators.required,Validators.minLength(4)]);
@@ -26,6 +36,9 @@ export class RegistrationComponent {
   email = new FormControl('',[Validators.required,Validators.email]);
   password = new FormControl('',[Validators.required,Validators.minLength(8),Validators.pattern('^[a-zA-Z0-9@$#%]*[@$#%]+[a-zA-Z0-9@$#%]*$')]);
   confirmPassword = new FormControl('',Validators.required);
+
+   
+
 
   errorMessageForFirstName() {
     
@@ -77,12 +90,14 @@ export class RegistrationComponent {
     
       submit(){
         
-        let dataObject={"firstName": this.firstname.value,
-        "lastName": this.lastname.value,
-        "service": "advance",
-        "email": this.email.value,
-        "password": this.password.value,
-        "cartId":"5ea2c96cad53b700227c5df4" 
+        let dataObject={
+        
+          firstName : this.firstname.value,
+          lastName  : this.lastname.value,
+          service   : "advance",
+          email     : this.email.value,
+          password  : this.password.value,
+          cartId    : "5ea2c96cad53b700227c5df4" 
         }
 
        
