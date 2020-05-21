@@ -364,13 +364,68 @@ export class UserService {
 
     const httpOptions = {
     
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
       'Authorization': localStorage.getItem("token"),
       
     }
 
     return this.apiRequest.postRequest(environment.BaseUserURL + 'uploadProfileImage',data,httpOptions)
 
+
+  }
+
+  getServiceData(){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json'
+    }
+
+    return this.apiRequest.getRequest(environment.BaseUserURL+ "service/",httpOptions)
+
+  }
+
+  addToCart(dataObject){
+
+    return this.apiRequest.postRequest(environment.BaseCartURl + "addToCart",dataObject)
+
+  }
+
+  getCartDetails(){
+    const httpOptions = {
+    
+      'Content-Type': 'application/json'
+    }
+
+    return this.apiRequest.getRequest(environment.BaseCartURl + "getCartDetails/",httpOptions)
+
+  }
+
+  myCart(){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.getRequest(environment.BaseCartURl + "myCart/",httpOptions)
+
+
+  }
+
+
+  placeOrder(dataObject){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.postRequest(environment.BaseCartURl + "placeOrder/",dataObject,httpOptions)
 
   }
 
