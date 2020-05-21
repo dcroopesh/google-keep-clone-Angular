@@ -8,7 +8,8 @@ export const environment = {
   BaseUserURL  : "http://fundoonotes.incubation.bridgelabz.com/api/user/",
   BaseNotesURL : "http://fundoonotes.incubation.bridgelabz.com/api/notes/",
   BaseLabelURl : "http://fundoonotes.incubation.bridgelabz.com/api/noteLabels/",
-  BaseQAURl    : "http://fundoonotes.incubation.bridgelabz.com/api/questionAndAnswerNotes/"
+  BaseQAURl    : "http://fundoonotes.incubation.bridgelabz.com/api/questionAndAnswerNotes/",
+  BaseCartURl  : "http://fundoonotes.incubation.bridgelabz.com/api/productcarts/"
 };
 
 /*
