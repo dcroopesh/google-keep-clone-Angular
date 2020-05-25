@@ -429,5 +429,32 @@ export class UserService {
 
   }
 
+  getTrashNotesList(){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.getRequest(environment.BaseNotesURL + 'getTrashNotesList/',httpOptions)
+
+  }
+
+  deleteForeverNotes(dataObject){
+
+    const httpOptions = {
+    
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token"),
+      
+    }
+
+    return this.apiRequest.postRequest(environment.BaseNotesURL + "deleteForeverNotes/",dataObject,httpOptions)
+
+
+  }
+
 }
 
