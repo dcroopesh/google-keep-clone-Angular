@@ -9,7 +9,7 @@
 }
 
 mat-progress-bar{
-    width: 60%;
+    width: 100%;
 }
 
 .app-name{
@@ -86,4 +86,34 @@ textarea{
 
 .row3{
     width: 100%;
+}
+
+.cart-icon{
+    position: absolute;
+    top:-15px;
+    z-index:1;
+    
+}
+
+.sign-in{
+    position: absolute;
+    top:5px;
+    z-index: 1;
+    left:-2%;
+}
+
+
+.review{
+    position: absolute;
+    top:5px;
+    z-index: 1;
+    left:42%;
+}
+
+
+.complete{
+    position: absolute;
+    top:8px;
+    z-index: 1;
+    left:88%;
 }
