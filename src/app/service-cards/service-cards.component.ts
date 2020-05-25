@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ServiceCardDialogComponent } from '../service-card-dialog/service-card-dialog.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../services/user.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-service-cards',
@@ -15,10 +16,15 @@ export class ServiceCardsComponent implements OnInit {
   @Input() cartId;
   colour = "#FFC226"
   data;
-  index = 2
-  constructor(private requests : UserService) { }
+  index
+  constructor(private requests : UserService,private dataService : DataService) { }
 
   ngOnInit(): void {
+
+    this.dataService.getcardIndex
+    .subscribe(next =>{
+      this.index = next
+    } )
 
     this.requests.getServiceData()
     .subscribe((response)=>{
@@ -31,6 +37,9 @@ export class ServiceCardsComponent implements OnInit {
   }
 
   send(i){
+
+    this.dataService.sendCardIndex(i)
+    
     this.onClick.emit({index:i,data:this.data});
   }
 
