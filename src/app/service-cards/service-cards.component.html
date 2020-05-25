@@ -1,6 +1,6 @@
 <div class="container" fxLayout="row" fxLayoutAlign="space-evenly center"  fxLayoutGap="20px" fxLayoutGap.lt-md ="40px" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center center"  >
 
-    <div class="box1" *ngFor="let data of data;let i = index" [ngClass]=" index === i ? 'box1:hover' : 'box1:hover{background-color:black}'" (click)="send(i)">
+    <div *ngFor="let data of data;let i = index" [ngClass]=" index <= 1 ? 'box2' : 'box1'" (click)="send(i)">
         <mat-card class="one"  fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="8px">
             <div class="heading">price : ${{ data.price }} per month</div>
             <div class="blue">{{ data.name }}</div>
