@@ -16,6 +16,11 @@ export class ShoppingCartComponent implements OnInit {
   showCheckout = false;
   orderCompleted = false;
   address = new FormControl()
+  leftPosition = "-2%";
+  yellowColor1 = "#FFC226";
+  yellowColor2 = "black";
+  yellowColor3 = "black";
+
   constructor(private requests : UserService ,private util : UtilityService) { }
 
   ngOnInit(): void {
@@ -32,7 +37,11 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   checkout(){
+    
+    this.leftPosition = "44%";
     this.progressBarValue = 50;
+    this.yellowColor1 = "black";
+    this.yellowColor2 = "#FFC226";
     this.showCheckout = true
   }
 
@@ -46,6 +55,9 @@ export class ShoppingCartComponent implements OnInit {
 
     this.requests.placeOrder(dataObject)
     .subscribe((response)=>{
+      this.leftPosition = "96%";
+      this.yellowColor2 = "black";
+      this.yellowColor3 = "#FFC226";
       this.progressBarValue = 100;
       this.orderCompleted = ! this.orderCompleted
       
