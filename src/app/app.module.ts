@@ -74,6 +74,8 @@ import { ServiceCardDialogComponent } from './service-card-dialog/service-card-d
 import {MatTabsModule} from '@angular/material/tabs';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { TrashComponent } from './trash/trash.component';
+import { ChartComponent } from './chart/chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,6 +112,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ServiceCardsComponent,
     ServiceCardDialogComponent,
     ShoppingCartComponent,
+    TrashComponent,
+    ChartComponent,
     
   ],
   imports: [
