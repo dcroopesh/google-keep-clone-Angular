@@ -17,6 +17,9 @@ export class MoreComponent implements OnInit {
   @Input() alreadyCommented;
   @Output() ondelete = new EventEmitter<string>() ;
   @Input() newNote;
+  @Input() trashNote;
+  @Output() onTrash = new EventEmitter();
+  @Output() onRestore = new EventEmitter();
 
   checked = [];
 
@@ -87,5 +90,15 @@ export class MoreComponent implements OnInit {
 
   callQA(){
     this.router.navigate(['/home/questionAnswer/'+this.noteId])
+  }
+
+  deleteForever(){
+
+    this.onTrash.emit()
+
+  }
+
+  restore(){
+    this.onRestore.emit()
   }
 }
