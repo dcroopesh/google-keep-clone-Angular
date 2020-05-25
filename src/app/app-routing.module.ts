@@ -19,6 +19,8 @@ import { AuthGuard } from './auth.guard';
 import { QuesAnsComponent } from './ques-ans/ques-ans.component';
 import { ServiceComponent } from './service/service.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { TrashComponent } from './trash/trash.component';
+import { ChartComponent } from './chart/chart.component';
 
 
 const routes: Routes = [
@@ -37,7 +39,10 @@ const routes: Routes = [
                 { path: 'archive' , component: ArchiveSidenavComponent},
                 { path: 'label/:labelname' , component: LabelsSidenavComponent},
                 { path: 'questionAnswer/:noteId' , component: QuesAnsComponent},
-                { path: 'shoppingCart' , component: ShoppingCartComponent} ]
+                { path: 'shoppingCart' , component: ShoppingCartComponent},
+                { path: 'trash' , component: TrashComponent},
+                { path: 'chart' , component: ChartComponent} ]
+
               
               
  },
