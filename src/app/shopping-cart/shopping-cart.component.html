@@ -3,8 +3,14 @@
     <div class="row1" fxFlexOffset="30px" fxLayout="row" fxLayoutAlign="space-evenly center">
             
         <p class="app-name">FundooNotes</p>
-        <mat-progress-bar mode="determinate" [value]="progressBarValue" color="primary"></mat-progress-bar>
-    
+        
+        <div style="width: 60%;position: relative;">
+            <mat-icon class="cart-icon" [ngStyle]="{'left': leftPosition}">shopping_cart</mat-icon>
+            <mat-progress-bar mode="determinate" [value]="progressBarValue" color="primary"></mat-progress-bar>
+            <div class="sign-in" [ngStyle]="{'color': yellowColor1}">signin</div>
+            <div class="review" [ngStyle]="{'color': yellowColor2}">review</div>
+            <div class="complete" [ngStyle]="{'color': yellowColor3}">complete</div>
+        </div>
     </div>
 
     <div class="cart">
