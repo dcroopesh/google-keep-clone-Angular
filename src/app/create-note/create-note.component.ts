@@ -1,12 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges, AfterContentInit, Input, DoCheck } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { FormControl } from '@angular/forms';
-import { MatDivider } from '@angular/material/divider';
-import { MatDialogRef } from '@angular/material/dialog';
 import { UtilityService } from '../services/utility.service';
-import { DisplayNoteComponent } from '../display-note/display-note.component';
-import { RepositionScrollStrategy } from '@angular/cdk/overlay';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-create-note',
@@ -100,6 +95,7 @@ export class CreateNoteComponent implements OnInit{
     }
 
     this.dataObject =  {
+
       title       : document.getElementById("title").textContent,
       description : document.getElementById("description").textContent,
       isPined     : this.pin,
@@ -108,6 +104,7 @@ export class CreateNoteComponent implements OnInit{
       labelIdList : JSON.stringify(labels),
       reminder    : this.remainderDate,
       collaberators : JSON.stringify(colab),
+
     }
 
 
