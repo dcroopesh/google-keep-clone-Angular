@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   grid=true
   imageData
   searchText = new FormControl()
-  
+  searchForPhone = false
   constructor(private route: Router,public dialog: MatDialog,private requests: UserService,
     private data : DataService) { 
     this.getLabels(); 
@@ -49,11 +49,12 @@ export class HomeComponent implements OnInit {
    
   }
 
-  dispalySignOut(){
+  displaySignOut(){
     this.signOut = ! this.signOut;
   }
 
   sendData(){
+    console.log(this.searchText.value)
     this.data.searchNote(this.searchText.value)
   }
 
@@ -114,6 +115,18 @@ showDialog(){
     
     this.grid = ! this.grid
     this.data.changeView(! this.grid)
+  }
+
+  showTrash(){
+    this.route.navigate(["/home/trash"])
+  }
+
+  showChart(){
+    this.route.navigate(["/home/chart"])
+  }
+
+  showInput(){
+    this.searchForPhone = ! this.searchForPhone
   }
 
 
