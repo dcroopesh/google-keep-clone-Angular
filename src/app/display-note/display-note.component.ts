@@ -24,6 +24,7 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
   @Output() onUNArchive = new EventEmitter<string>();
   
   newNote="True"
+  @Input() trashNote
   noteId;
   remainderArray = [];
   displayDate = [];
@@ -49,7 +50,7 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
   
   ngOnChanges()	{
 
-
+    // debugger
     var n = this.notesObjects;
     this.collaborators = []
     this.displayDate = [];
@@ -245,12 +246,49 @@ export class DisplayNoteComponent implements OnInit,OnChanges{
   showColabDialog(){
 
 
+
       const dialogRef = this.dialog.open(CollabDialogComponent, {
       width: '450px',
       data: {item: this.noteId ,collab : this.collaborators[this.noteId]}
       });
 
   }
+
+  deleteForeverNotes(){
+    
+    let dataObject = {
+      noteIdList : [this.noteId]
+    }
+
+    this.requests.deleteForeverNotes(dataObject)
+    .subscribe((response)=>{
+      this.notifyNote.emit()
+    },(error)=>{
+      console.log(error)
+    })
+
+  }
+
+  restore(){
+
+    let dataObject = {
+      
+      isDeleted : false,
+      noteIdList : [this.noteId]
+    }
+
+    this.requests.deleteNotes(dataObject)
+    .subscribe((response)=>{
+      this.notifyNote.emit()
+    },(error)=>{
+      console.log(error)
+    })
+
+    
+
+  }
+
+
 
   
 }
