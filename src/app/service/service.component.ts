@@ -26,6 +26,8 @@ export class ServiceComponent implements OnInit {
 
     this.data = data.data 
     this.index = data.index
+
+    
     let dataObject = {
       productId : this.data[this.index]['id']
     }
