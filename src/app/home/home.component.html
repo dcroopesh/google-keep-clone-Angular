@@ -1,15 +1,24 @@
 <div class="">
 
-    <mat-toolbar class="colour" fxLayout="row" fxLayout.lt-md="row" fxLayoutGap.lt-md="2%"fxLayoutGap="2%" fxLayout="space-between center" >
+    <mat-toolbar class="colour" fxLayout="row" fxLayout.lt-md="row" fxLayoutGap.lt-md="2%" fxLayoutGap="2%"  fxLayoutAlign.lt-md="space-between center" >
         <button mat-icon-button (click)="sidenav.toggle()" >
         <mat-icon>menu</mat-icon></button>
         
         <img src="../../assets/images/keep.jpeg">
-        <h2 >fundooNotes</h2>
-              
-    <mat-card class="search-bar" fxLayout="row" fxLayout.lt-md="row"fxLayoutGap="3%"  fxLayoutAlign="start center">
+        <h2 class="app-name" >fundooNotes</h2>
+        <h2 class="app-name1">Note</h2>
+
+    
+    <mat-card class="search-bar" id="search" fxLayout="row" fxLayoutGap="3%"  fxLayoutAlign="start center">
         <mat-icon >search</mat-icon>
         <input type="text" class="input" placeholder="Search.." [formControl]="searchText" (keyup)=sendData()>
+    </mat-card>
+
+    <div class="search-bar1"><mat-icon (click)="showInput()">search</mat-icon></div>
+
+    <mat-card *ngIf="searchForPhone" class="searchForPhone">
+        <input type="text" class="input" placeholder="Search.." [formControl]="searchText" (keyup)=sendData()>
+
     </mat-card>
 
         <mat-icon routerLink="/home/shoppingCart" style="outline: none;">shopping_cart</mat-icon>
@@ -19,7 +28,7 @@
             <div class="list" *ngIf="grid" (click)="showGridOrList()"></div>
         </div>
 
-        <img [src] = "profilePic"  alt="dp" (click)="dispalySignOut()">
+        <img [src] = "profilePic"  alt="dp" (click)="displaySignOut()">
         
         <mat-card *ngIf="signOut" class="sign-out" >
         <div fxLayout= row fxLayoutAlign = "start start" fxLayoutGap="10px">
@@ -89,12 +98,19 @@
                 <p fxFlexOffset="25%">Archive</p>
             </div>
 
-            <div class="side-nav" style="margin-top:7%;"fxLayout="row" fxLayoutAlign="start center">
+            <div class="side-nav" style="margin-top:7%;"fxLayout="row" fxLayoutAlign="start center" (click)="showTrash()">
                 <svg width=24 height=24 fxFlexOffset="3%">
                     <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z">
                         </path>
                 </svg>
-                <p fxFlexOffset="25%">Trash</p>
+                <p fxFlexOffset="25%" >Trash</p>
+            </div>
+
+            <mat-divider></mat-divider>
+            
+            <div class="side-nav" style="margin-top:7%;"fxLayout="row" fxLayoutAlign="start center" (click)="showChart()">
+                <mat-icon fxFlexOffset="3%">double_arrow</mat-icon>
+                <p fxFlexOffset="25%" >Graph</p>
             </div>
 
            
