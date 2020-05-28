@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, AfterViewChecked, AfterContentChecked, OnChanges } from '@angular/core';
+import { Component, OnInit, DoCheck, AfterViewChecked, AfterContentChecked, OnChanges, AfterViewInit, AfterContentInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,27 +14,24 @@ export class LabelsSidenavComponent implements OnInit{
   labelname;
   notes;
   constructor(private requests : UserService,private route : ActivatedRoute) { 
-    this.labelname = this.route.snapshot.paramMap.get("labelname")
-    this.displayNotes();
-  }
-
-   
-
- 
-  ngOnInit(): void {
     
   }
 
+  ngOnInit(): void {
 
-  // ngOnChanges(){
-  //   this.labelname = this.route.snapshot.paramMap.get("labelname")
-  //   this.displayNotes();
-  // }
+    this.labelname = this.route.snapshot.paramMap.get("labelname")
+    this.displayNotes();
+    console.log(this.labelname)
+    
+  }
+
+ 
   
 
   displayNotes(){
     let noteLabel;
     let note = []
+
     this.requests.getNotesListByLabel(this.labelname)
     .subscribe((response) => {
         this.notes = response.body['data']['data']
@@ -45,8 +42,8 @@ export class LabelsSidenavComponent implements OnInit{
            if (noteLabel[j]['label'] === this.labelname){
               note.push(this.notes[i]);
            }
-         }
         }
+      }
       this.noteArray = note;
       
     },
@@ -55,4 +52,4 @@ export class LabelsSidenavComponent implements OnInit{
     })
   }
 
-}
+} 
