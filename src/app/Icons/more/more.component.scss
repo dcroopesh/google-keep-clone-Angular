@@ -28,3 +28,9 @@ mat-checkbox{
     padding-left: 10px;
 }
 
+@media only screen and (max-width : 500px){
+    .menu{
+        right: 40px;
+    }
+}
+
