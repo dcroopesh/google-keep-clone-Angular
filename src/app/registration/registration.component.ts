@@ -14,8 +14,9 @@ import { DataService } from '../services/data.service';
 export class RegistrationComponent {
 
   hide = true;
-  cartId 
+  cartId = ''
   dataa
+  service
   constructor(private router: Router , private requests : UserService,private util : UtilityService,
     private data : DataService
     ) {}
@@ -23,11 +24,17 @@ export class RegistrationComponent {
 
 
   ngOnInit(): void {
+
     this.data.getcartId.subscribe(next => 
       {
-      this.cartId = next 
+        console.log(next)
+
+      this.cartId = next['id']
+      this.service = next['product']['name']
       console.log(this.cartId)
       })
+
+      
     }
 
   
@@ -94,10 +101,10 @@ export class RegistrationComponent {
         
           firstName : this.firstname.value,
           lastName  : this.lastname.value,
-          service   : "advance",
+          service   : this.service,
           email     : this.email.value,
           password  : this.password.value,
-          cartId    : "5ea2c96cad53b700227c5df4" 
+          cartId    : this.cartId 
         }
 
        
