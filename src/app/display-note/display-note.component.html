@@ -1,8 +1,8 @@
-<div class="container" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="3%">
+<div class="container" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="3%"  >
     
     
     <mat-card class="mat-card" [ngStyle]="{'width': width}"*ngFor="let item of notesObjects.reverse() | displayNote : searchText ; let i = index" [style.background-color]="item.color"   fxLayout="column" fxLayoutAlign="space-between start"
-    fxFlex.lt-md = "1 1 97%" fxFlexOffset.lt-md="5%" (mouseover)=getItem(item) fxLayoutGap="2%">
+    fxFlex.lt-md = "1 1 97%" (mouseover)=getItem(item) fxLayoutGap.lt-md="2%">
     
 
         <div id="title" (click)="showDialog(item)" ><b>{{item.title}}</b>
@@ -47,7 +47,7 @@
                 <app-image class="icons"></app-image>
                 <app-archive *ngIf="! item.isArchived" class="icons" (onArchive)=archiveNotes()></app-archive>
                 <app-unarchive *ngIf="item.isArchived" (onUnArchive)=unarchive() [noteId]="noteId" class="icons"></app-unarchive>
-                <app-more class="icons" [newNote]="newNote" [noteId]="noteId"  (ondelete)=send($event) [alreadyCommented]="commented[i]" (onLabelSelect)="addLabel($event)"></app-more>
+                <app-more class="icons" [newNote]="newNote" [trashNote]="trashNote" [noteId]="noteId"  (ondelete)=send($event) [alreadyCommented]="commented[i]" (onLabelSelect)="addLabel($event)" (onTrash)="deleteForeverNotes()" (onRestore)="restore()"></app-more>
             </div>
         </div>
 
